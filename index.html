@@ -34,7 +34,11 @@ body {
 .wallpaper {
   position: absolute;
   inset: 0;
-  background: url('wallpaper.png') center center / cover no-repeat;
+  background-image: url('./wallpaper.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
 }
 
 .status {
