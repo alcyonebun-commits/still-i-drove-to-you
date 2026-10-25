@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10131b">
+<title>milan's phone — still, i drove to you.</title>
+<style>
+:root{--ink:#171923;--muted:#858998;--paper:#f7f4ef;--blue:#3478f6;--line:#e8e6e2}
+*{box-sizing:border-box} body{margin:0;min-height:100svh;display:grid;place-items:center;background:#11131a;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.phone{width:min(390px,100vw);height:min(844px,100svh);min-height:600px;position:relative;overflow:hidden;border:7px solid #292b31;border-radius:44px;background:var(--paper);box-shadow:0 25px 80px #0008}
+.status{position:absolute;top:0;left:0;right:0;height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:12px;font-weight:700;z-index:5;color:inherit}
+.dynamic{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:92px;height:25px;border-radius:20px;background:#111;z-index:6}
+.screen{position:absolute;inset:0;overflow:auto;display:none;padding:54px 18px 34px;background:var(--paper)}
+.screen.active{display:block}.lock{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;color:white;background:linear-gradient(160deg,#253f58 0%,#627b8b 44%,#d6b6a0 100%);padding-top:92px}
+.lock:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#ffffff35,transparent 55%),linear-gradient(0deg,#17202b88,transparent 60%);pointer-events:none}
+.lock>*{position:relative}.lock .date{font-size:15px;letter-spacing:.3px}.clock{font-size:76px;font-weight:200;letter-spacing:-4px;line-height:1.1;margin:12px 0 0}.lock .hint{margin-top:auto;margin-bottom:70px;font-size:13px;opacity:.92}.unlock{border:1px solid #ffffff88;color:white;background:#ffffff20;border-radius:22px;padding:12px 22px;font-size:14px;backdrop-filter:blur(8px);cursor:pointer;margin-bottom:45px}
+.home{background:linear-gradient(150deg,#d8c8bc,#f5e9dc 45%,#b5c5c5);padding-top:68px}
+.welcome{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#565b61;margin:0 4px 6px}.owner{font-size:29px;letter-spacing:-1px;font-weight:650;margin:0 4px 22px}.widget{border:1px solid #ffffffa8;background:#ffffff70;border-radius:20px;padding:14px 16px;margin-bottom:20px;backdrop-filter:blur(12px)}.widget small{color:#5f646d}.widget p{margin:7px 0 0;font-size:14px;line-height:1.4}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:19px 10px;margin:20px 0 22px}.app{border:0;background:transparent;color:#292b30;display:flex;align-items:center;flex-direction:column;gap:6px;font-size:11px;cursor:pointer;padding:0}.icon{width:55px;height:55px;border-radius:15px;display:grid;place-items:center;font-size:27px;box-shadow:0 4px 10px #0001}.messages{background:#42c95a}.photos{background:linear-gradient(135deg,#f6cf68,#ee8db0,#8d8bf0)}.notes{background:#fff1a8}.phoneapp{background:#54d36a}.music{background:#f06b82}.calendar{background:#fff}.camera{background:#d5d8dc}.settings{background:#c6cbd1}.dock{position:absolute;left:14px;right:14px;bottom:12px;display:flex;justify-content:space-around;padding:12px 10px;border-radius:25px;background:#ffffff80;backdrop-filter:blur(18px)}
+.header{display:flex;align-items:center;gap:12px;margin:0 0 20px}.back{border:0;background:#e8e5df;border-radius:12px;padding:9px 12px;font-size:14px;cursor:pointer}.header h2{font-size:22px;margin:0;letter-spacing:-.5px}.sub{color:var(--muted);font-size:12px;margin-top:4px}
+.search{border:0;border-radius:12px;background:#eae7e1;padding:11px 13px;width:100%;margin-bottom:14px;font-size:14px}.row{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line);cursor:pointer}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#d9d2ca;font-weight:700}.row strong{display:block;font-size:14px}.row small{display:block;color:var(--muted);margin-top:4px;font-size:12px}.bubble{max-width:84%;padding:11px 14px;border-radius:18px;margin:10px 0;font-size:14px;line-height:1.4}.sent{margin-left:auto;background:#3478f6;color:white;border-bottom-right-radius:5px}.received{background:#e8e6e2;border-bottom-left-radius:5px}.day{text-align:center;color:var(--muted);font-size:11px;margin:15px}.note{background:#fff1a8;border-radius:16px;padding:15px;margin:10px 0;cursor:pointer}.note strong{display:block;margin-bottom:7px}.note small{color:#6f6b5e}.gridphotos{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.tile{aspect-ratio:1;border-radius:9px;background:linear-gradient(135deg,#c5b3a6,#e9d8c8);display:grid;place-items:center;font-size:28px}.empty{padding:25px 12px;text-align:center;color:var(--muted);font-size:13px}.detail{background:#fff;border-radius:16px;padding:18px;line-height:1.55;font-size:14px}.homebar{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:110px;height:4px;border-radius:8px;background:currentColor;opacity:.65;z-index:8;cursor:pointer}
+@media(max-height:650px){.phone{min-height:0;height:100svh;border-radius:25px}.clock{font-size:62px}.apps{gap:12px 8px}.icon{width:48px;height:48px}}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="status"><span id="statusTime">9:41</span><span>●●● ▰</span></div><div class="dynamic"></div>
+  <section class="screen lock active" id="lock">
+    <div class="date">Sunday, October 25</div><div class="clock" id="clock">09:41</div>
+    <div class="hint">tap below to unlock</div><button class="unlock" onclick="showScreen('home')">↑ &nbsp; swipe up to open</button>
+  </section>
+  <section class="screen home" id="home">
+    <p class="welcome">a little piece of my life</p><h1 class="owner">Milan's iPhone</h1>
+    <div class="widget"><small>SUNDAY · OCT 25</small><p><b>today's reminder</b><br>don't forget to buy iced coffee ☕</p></div>
+    <div class="apps">
+      <button class="app" onclick="openApp('messages')"><span class="icon messages">💬</span>Messages</button>
+      <button class="app" onclick="openApp('photos')"><span class="icon photos">🌈</span>Photos</button>
+      <button class="app" onclick="openApp('notes')"><span class="icon notes">📝</span>Notes</button>
+      <button class="app" onclick="openApp('recents')"><span class="icon phoneapp">📞</span>Phone</button>
+      <button class="app" onclick="openApp('music')"><span class="icon music">🎵</span>Music</button>
+      <button class="app" onclick="openApp('calendar')"><span class="icon calendar">📅</span>Calendar</button>
+      <button class="app" onclick="openApp('camera')"><span class="icon camera">📷</span>Camera</button>
+      <button class="app" onclick="openApp('settings')"><span class="icon settings">⚙️</span>Settings</button>
+    </div>
+    <div class="dock">
+      <button class="app" onclick="openApp('recents')"><span class="icon phoneapp">📞</span></button>
+      <button class="app" onclick="openApp('messages')"><span class="icon messages">💬</span></button>
+      <button class="app" onclick="openApp('photos')"><span class="icon photos">🌈</span></button>
+      <button class="app" onclick="openApp('music')"><span class="icon music">🎵</span></button>
+    </div>
+  </section>
+  <section class="screen" id="messages">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Messages</h2><div class="sub">your conversations</div></div></div>
+    <input class="search" placeholder="Search" oninput="filterRows(this,'messageRows')">
+    <div id="messageRows">
+      <div class="row" onclick="openChat('davka')"><div class="avatar">D</div><div><strong>Davka</strong><small>jangan lupa makan, ya.</small></div></div>
+      <div class="row" onclick="openChat('nolan')"><div class="avatar">N</div><div><strong>Nolan</strong><small>besok latihan jam berapa?</small></div></div>
+      <div class="row" onclick="openChat('group')"><div class="avatar">✦</div><div><strong>anak-anak 🫂</strong><small>Meki: kalian jadi ikut nggak?</small></div></div>
+    </div>
+  </section>
+  <section class="screen" id="chat">
+    <div class="header"><button class="back" onclick="openApp('messages')">‹</button><div><h2 id="chatName">Davka</h2><div class="sub">iMessage</div></div></div><div id="chatContent"></div>
+  </section>
+  <section class="screen" id="notes">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Notes</h2><div class="sub">all notes · on my iPhone</div></div></div>
+    <div class="note" onclick="openNote('random')"><strong>things to do this week</strong><small>buy coffee, finish assignment, reply to mom…</small></div>
+    <div class="note" onclick="openNote('davka')"><strong>things i should tell davka</strong><small>just some thoughts i keep forgetting.</small></div>
+    <div class="note" onclick="openNote('later')"><strong>read this later</strong><small>untitled · 2 lines</small></div><div id="noteDetail"></div>
+  </section>
+  <section class="screen" id="photos">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Photos</h2><div class="sub">memories, probably</div></div></div>
+    <div class="gridphotos"><div class="tile" onclick="photoDetail('🍦','ice cream day')">🍦</div><div class="tile" onclick="photoDetail('🌅','the sky looked pretty')">🌅</div><div class="tile" onclick="photoDetail('🧋','our usual order')">🧋</div><div class="tile" onclick="photoDetail('📚','study date (not studying)')">📚</div><div class="tile" onclick="photoDetail('🐈','a cat we met')">🐈</div><div class="tile" onclick="photoDetail('🫶','my favorite people')">🫶</div></div><div id="photoDetail"></div>
+  </section>
+  <section class="screen" id="recents">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Recents</h2><div class="sub">calls</div></div></div>
+    <div class="row"><div class="avatar">D</div><div><strong>Davka</strong><small>outgoing call · yesterday</small></div></div>
+    <div class="row"><div class="avatar">M</div><div><strong>Mama</strong><small>incoming call · Monday</small></div></div>
+    <div class="row"><div class="avatar">D</div><div><strong>Davka</strong><small>missed call · 11:48 PM</small></div></div>
+  </section>
+  <section class="screen" id="music">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Music</h2><div class="sub">recently played</div></div></div>
+    <div class="detail"><div style="font-size:44px">🎧</div><b>songs for the way home</b><p>01 · somewhere only we know</p><p>02 · the night we met</p><p>03 · those eyes</p><small>Playlist by Milan</small></div>
+  </section>
+  <section class="screen" id="calendar">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Calendar</h2><div class="sub">October</div></div></div>
+    <div class="detail"><b>25 · Sunday</b><p>☕ get coffee</p><p>📚 finish chemistry notes</p><p>💬 call Davka back</p></div>
+  </section>
+  <section class="screen" id="camera">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Camera</h2><div class="sub">camera roll preview</div></div></div><div class="empty">No camera access needed for this AU.<br>Let's fill the camera roll with story photos later 📸</div>
+  </section>
+  <section class="screen" id="settings">
+    <div class="header"><button class="back" onclick="showScreen('home')">‹ Home</button><div><h2>Settings</h2><div class="sub">Milan's iPhone</div></div></div><div class="detail"><p><b>About</b><br>iPhone · personal device</p><p><b>Wallpaper</b><br>the sky from that one evening</p><p><b>Storage</b><br>memories taking up space</p></div>
+  </section>
+  <div class="homebar" onclick="showScreen('home')" title="Home"></div>
+</div>
+<script>
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function openApp(id){showScreen(id);}
+function openChat(who){
+ const names={davka:'Davka',nolan:'Nolan',group:'anak-anak 🫂'};document.getElementById('chatName').textContent=names[who];
+ const chats={
+ davka:[['received','udah makan?'],['sent','udahhh'],['received','makan apa?'],['sent','ih interogasi banget 😭'],['received','jawab aja susah amat'],['sent','belum sih WKWK'],['received','MILAN.'],['sent','iya iya aku makan sekarang 😔']],
+ nolan:[['received','besok latihan jam berapa?'],['sent','kayaknya jam 3 deh'],['received','oke, nanti aku kabarin lagi']],
+ group:[['received','Meki: kalian jadi ikut nggak?'],['sent','Milan: ikut apaan?'],['received','Meki: YA AMPUN MILAN 😭'],['received','Davka: biarin, otaknya baru bangun']]
+ };
+ document.getElementById('chatContent').innerHTML='<div class="day">iMessage</div>'+chats[who].map(m=>'<div class="bubble '+m[0]+'">'+m[1]+'</div>').join('');showScreen('chat');
+}
+function openNote(which){
+ const notes={
+ random:'<div class="detail"><b>things to do this week</b><p>☐ buy iced coffee</p><p>☐ finish assignment</p><p>☐ reply to mom</p><p>☐ remind Davka to stop acting like my dad</p></div>',
+ davka:'<div class="detail"><b>things i should tell davka</b><p>makasih udah selalu jemput aku.</p><p>aku tahu aku sering merepotkan kamu, tapi aku selalu merasa aman kalau ada kamu.</p><p>…</p><p>nanti aja deh. malu.</p></div>',
+ later:'<div class="detail"><b>read this later</b><p>some things are easier to write than to say out loud.</p></div>'
+ };
+ document.getElementById('noteDetail').innerHTML=notes[which];
+}
+function photoDetail(emoji,caption){document.getElementById('photoDetail').innerHTML='<div class="detail" style="margin-top:15px;text-align:center"><div style="font-size:54px">'+emoji+'</div>'+caption+'</div>'}
+function filterRows(input,id){const q=input.value.toLowerCase();document.querySelectorAll('#'+id+' .row').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?'flex':'none')}
+function updateTime(){const d=new Date();const t=d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});document.getElementById('statusTime').textContent=t;document.getElementById('clock').textContent=t}
+updateTime();setInterval(updateTime,30000);
+</script>
+</body>
+</html>
