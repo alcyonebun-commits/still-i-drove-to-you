@@ -444,6 +444,33 @@ line-height: 1.7;
 font-weight: 500;
 overflow-wrap: anywhere;
 }
+  .lock-controls {
+position: absolute;
+bottom: 75px;
+left: 25px;
+right: 25px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10;
+}
+
+.lock-control {
+width: 48px;
+height: 48px;
+border-radius: 50%;
+border: 1px solid rgba(255, 255, 255, 0.2);
+background: rgba(40, 40, 40, 0.45);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+color: white;
+font-size: 23px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+padding: 0;
+}
 </style>
 </head>
 
@@ -494,10 +521,18 @@ overflow-wrap: anywhere;
       </div>
     </div>
 
-    <div class="swipe-area" id="swipeArea">
-      <span>▲</span>
-      <span>Swipe up to unlock</span>
-    </div>
+    <div class="lock-controls">
+      <button class="lock-control" id="flashlightButton" aria-label="Flashlight">
+        🔦
+      </button>  <button class="lock-control" id="cameraButton" aria-label="Camera">
+    📷
+  </button>
+</div>
+
+<div class="swipe-area" id="swipeArea">
+  <span>▲</span>
+  <span>Swipe up to unlock</span>
+</div>
   </section>
 
   <!-- PASSCODE SCREEN -->
