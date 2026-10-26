@@ -654,14 +654,26 @@ function openPasscode() {
 
 document.getElementById("swipeArea").addEventListener("click", openPasscode);
 
+let startY = 0;
+let startX = 0;
+
 document.getElementById("lockScreen").addEventListener("touchstart", e => {
-  startY = e.touches[0].clientY;
-}, {passive:true});
+if (e.target.closest(".lock-control")) return;
+
+startY = e.touches[0].clientY;
+startX = e.touches[0].clientX;
+}, {passive: true});
 
 document.getElementById("lockScreen").addEventListener("touchend", e => {
-  const endY = e.changedTouches[0].clientY;
-  if (startY - endY > 35) openPasscode();
-}, {passive:true});
+if (e.target.closest(".lock-control")) return;
+
+const endY = e.changedTouches[0].clientY;
+const endX = e.changedTouches[0].clientX;
+
+if (startY - endY > 35 && Math.abs(startX - endX) < 60) {
+openPasscode();
+}
+}, {passive: true});
 
 document.querySelectorAll("[data-num]").forEach(button => {
   button.addEventListener("click", () => {
