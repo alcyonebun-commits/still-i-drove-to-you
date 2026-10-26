@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   background: #181818;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   color: white;
   overflow: hidden;
 }
@@ -90,11 +90,13 @@ body {
 }
 
 .clock {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   font-size: clamp(68px, 20vw, 88px);
   line-height: 1.05;
   font-weight: 200;
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   text-shadow: 0 2px 12px #222;
+  font-variant-numeric: tabular-nums;
 }
 
 .lock-message {
