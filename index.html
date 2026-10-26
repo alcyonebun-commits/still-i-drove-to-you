@@ -377,6 +377,73 @@ text-shadow: 0 1px 6px #222;
   white-space: nowrap;
   display: none;
 }
+  .lock-widgets {
+display: flex;
+gap: 10px;
+width: min(340px, calc(100vw - 52px));
+margin: 28px auto 0;
+align-items: stretch;
+justify-content: center;
+}
+
+.widget {
+background: rgba(255, 255, 255, 0.13);
+border: 1px solid rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border-radius: 18px;
+padding: 12px;
+box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+min-width: 0;
+}
+
+.weather-widget {
+flex: 0 0 105px;
+text-align: center;
+}
+
+.weather-icon {
+font-size: 26px;
+line-height: 1.1;
+}
+
+.weather-temp {
+font-size: 28px;
+font-weight: 600;
+margin-top: 4px;
+}
+
+.weather-desc {
+font-size: 12px;
+font-weight: 600;
+margin-top: 3px;
+}
+
+.weather-condition {
+font-size: 11px;
+opacity: 0.85;
+margin-top: 2px;
+}
+
+.reminder-widget {
+flex: 1;
+text-align: left;
+}
+
+.reminder-title {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.7px;
+margin-bottom: 8px;
+opacity: 0.9;
+}
+
+.reminder-text {
+font-size: 12px;
+line-height: 1.7;
+font-weight: 500;
+overflow-wrap: anywhere;
+}
 </style>
 </head>
 
@@ -406,7 +473,25 @@ text-shadow: 0 1px 6px #222;
     <div class="lock-content">
       <div class="date" id="lockDate">Sunday, October 25</div>
       <div class="clock" id="lockClock">09:41</div>
-      <div class="lock-message">🔒 &nbsp; iPhone Locked</div>
+      <div class="lock-widgets">
+
+  <div class="widget weather-widget">
+    <div class="weather-icon">☀️</div>
+    <div class="weather-temp">28°</div>
+    <div class="weather-desc">Jakarta</div>
+    <div class="weather-condition">Sunny</div>
+  </div>
+
+  <div class="widget reminder-widget">
+    <div class="reminder-title">TODAY'S PLAN</div>
+    <div class="reminder-text">
+      📚 Les<br>
+      🐱 Kasih makan kucing<br>
+      🧋 Jajan sore bareng Davka
+    </div>
+  </div>
+
+      </div>
     </div>
 
     <div class="swipe-area" id="swipeArea">
