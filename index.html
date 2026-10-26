@@ -58,6 +58,7 @@ box-sizing: border-box;
   font-size: 17px;
   font-weight: 600;
 }
+  
   .dynamic-island {
   position: absolute;
   z-index: 11;
@@ -69,7 +70,79 @@ box-sizing: border-box;
   background: #050505;
   border-radius: 25px;
   }
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 18px;
+  color: white;
+}
 
+.signal-icon {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.signal-icon i {
+  display: block;
+  width: 3px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.signal-icon i:nth-child(1) {
+  height: 4px;
+}
+
+.signal-icon i:nth-child(2) {
+  height: 6px;
+}
+
+.signal-icon i:nth-child(3) {
+  height: 9px;
+}
+
+.signal-icon i:nth-child(4) {
+  height: 12px;
+}
+
+.network-type {
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 1px;
+}
+
+.battery-icon {
+  position: relative;
+  box-sizing: border-box;
+  width: 22px;
+  height: 11px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  padding: 1.5px;
+  margin-left: 2px;
+}
+
+.battery-icon::after {
+  content: "";
+  position: absolute;
+  right: -3.5px;
+  top: 2px;
+  width: 2px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+  display: block;
+  width: 78%;
+  height: 100%;
+  background: currentColor;
+  border-radius: 1px;
+}
 
 
 .screen {
@@ -314,8 +387,16 @@ text-shadow: 0 1px 6px #222;
   <div class="dynamic-island"></div>
 
   <div class="status">
-    <span id="statusTime">9:41</span>
-    <span>●●● ▰</span>
+  <span id="statusTime">9:41</span>
+  <span class="status-icons">
+    <span class="signal-icon">
+      <i></i><i></i><i></i><i></i>
+    </span>
+    <span class="network-type">5G</span>
+    <span class="battery-icon">
+      <span class="battery-level"></span>
+    </span>
+  </span>
   </div>
 
   <div class="toast" id="toast"></div>
