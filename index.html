@@ -214,21 +214,35 @@ text-shadow: 0 1px 6px #222;
 }
 
 .home-indicator {
-position: relative;
-display: block;
-width: 135px;
-height: 5px;
-min-height: 5px;
-margin: 12px auto 8px;
-border-radius: 10px;
-background-color: #ffffff;
-opacity: 1;
-z-index: 9999;
-flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: 135px;
+  height: 5px;
+  min-height: 5px;
+  margin: 12px auto 8px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  opacity: 1;
+  z-index: 9999;
+  flex-shrink: 0;
 }
-  #lockScreen > .home-indicator {
+
+#lockScreen > .home-indicator {
   display: none;
-  }
+}
+
+#homeIndicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  display: none;
+}
+
+#homeScreen.active ~ #homeIndicator {
+  display: block;
+}
 
 .passcode-screen {
   background: #202126;
