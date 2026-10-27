@@ -819,6 +819,7 @@ function checkPasscode() {
     error.textContent = "";
     showScreen(homeScreen);
   } else {
+    if (navigator.vibrate) navigator.vibrate(100);
     error.textContent = "Incorrect passcode. Try again.";
     entered = "";
     updateDots();
