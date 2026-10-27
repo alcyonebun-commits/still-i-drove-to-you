@@ -677,16 +677,67 @@ function openPasscode() {
 
 let startY = 0;
 let startX = 0;
+let isLockControl = false;
 
-document.getElementById("lockScreen").addEventListener("touchstart", e => {
-if (e.target.closest(".lock-control")) return;
+const lockScreenEl = document.getElementById("lockScreen");
 
-startY = e.touches[0].clientY;
-startX = e.touches[0].clientX;
-}, {passive: true});
+lockScreenEl.addEventListener("touchstart", e => {
+  isLockControl = Boolean(e.target.closest(".lock-control"));
+  if (isLockControl) return;
 
-document.getElementById("lockScreen").addEventListener("touchend", e => {
-if (e.target.closest(".lock-control")) return;
+  startY = e.touches[0].clientY;
+  startX = e.touches[0].clientX;
+
+  lockScreenEl.style.transition = "none";
+}, { passive: true });
+
+lockScreenEl.addEventListener("touchmove", e => {
+  if (isLockControl) return;
+
+  const currentY = e.touches[0].clientY;
+  const currentX = e.touches[0].clientX;
+  const distance = startY - currentY;
+
+  if (distance > 0 && Math.abs(startX - currentX) < 60) {
+    lockScreenEl.style.transform =
+      `translateY(-${Math.min(distance, window.innerHeight)}px)`;
+  }
+}, { passive: true });
+
+lockScreenEl.addEventListener("touchend", e => {
+  if (isLockControl) {
+    isLockControl = false;
+    return;
+  }
+
+  const endY = e.changedTouches[0].clientY;
+  const endX = e.changedTouches[0].clientX;
+  const distance = startY - endY;
+
+  if (
+    distance > window.innerHeight * 0.5 &&
+    Math.abs(startX - endX) < 60
+  ) {
+    lockScreenEl.style.transition = "transform 250ms ease-out";
+    lockScreenEl.style.transform = "translateY(-100%)";
+
+    setTimeout(() => {
+      openPasscode();
+      lockScreenEl.style.transition = "";
+      lockScreenEl.style.transform = "";
+    }, 250);
+  } else {
+    lockScreenEl.style.transition = "transform 220ms ease-out";
+    lockScreenEl.style.transform = "translateY(0)";
+
+    setTimeout(() => {
+      lockScreenEl.style.transition = "";
+      lockScreenEl.style.transform = "";
+    }, 220);
+  }
+
+  isLockControl = false;
+}, { passive: true });
 
 const endY = e.changedTouches[0].clientY;
 const endX = e.changedTouches[0].clientX;
