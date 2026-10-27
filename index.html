@@ -196,7 +196,7 @@ text-shadow: 0 1px 6px #222;
 
 .swipe-area {
   position: absolute;
-  bottom: 15px ;
+  bottom: 0px ;
   left: 0;
   width: 100%;
   height: 115px;
@@ -214,17 +214,19 @@ text-shadow: 0 1px 6px #222;
 }
 
 .home-indicator {
-  position: relative;
+  position: absolute;
   display: block;
   width: 135px;
   height: 5px;
   min-height: 5px;
-  margin: 12px auto 8px;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
   border-radius: 10px;
   background-color: #ffffff;
   opacity: 1;
   z-index: 9999;
-  flex-shrink: 0;
 }
 
 #lockScreen > .home-indicator {
@@ -233,14 +235,10 @@ text-shadow: 0 1px 6px #222;
 
 #homeIndicator {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  display: none;
-}
-
-#homeScreen.active ~ #homeIndicator {
   display: block;
 }
 
