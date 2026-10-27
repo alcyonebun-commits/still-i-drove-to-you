@@ -739,17 +739,6 @@ lockScreenEl.addEventListener("touchend", e => {
   isLockControl = false;
 }, { passive: true });
 
-const endY = e.changedTouches[0].clientY;
-const endX = e.changedTouches[0].clientX;
-
-if (
-  startY - endY > window.innerHeight * 0.5 &&
-  Math.abs(startX - endX) < 60
-) {
-  openPasscode();
-}
-}, {passive: true});
-
 document.querySelectorAll("[data-num]").forEach(button => {
   button.addEventListener("click", () => {
     if (entered.length >= 4) return;
