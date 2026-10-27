@@ -267,6 +267,21 @@ text-shadow: 0 1px 6px #222;
   filter: blur(12px);
   z-index: -1;
   }
+  .pass-lock-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 16px;
+}
+
+.pass-lock-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .pass-title {
   font-size: 22px;
@@ -581,7 +596,12 @@ padding: 0;
 
   <!-- PASSCODE SCREEN -->
   <section class="screen passcode-screen" id="passScreen">
-    <div style="font-size:35px;margin-bottom:12px">🔒</div>
+    <div class="pass-lock-icon">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="5" y="10" width="14" height="11" rx="2.5"/>
+    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+  </svg>
+    </div>
     <div class="pass-title">Enter Passcode</div>
     <div class="pass-subtitle">Enter the passcode to unlock Milan's iPhone.</div>
 
