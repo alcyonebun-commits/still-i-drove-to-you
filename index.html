@@ -629,7 +629,7 @@ padding: 0;
       <button class="key" data-num="8">8<small>TUV</small></button>
       <button class="key" data-num="9">9<small>WXYZ</small></button>
 
-      <button class="key action" id="cancel">Cancel</button>
+      <button class="key action" id="cancel">Emergency</button>
       <button class="key" data-num="0">0</button>
       <button class="key action" id="delete">Delete</button>
     </div>
@@ -812,6 +812,9 @@ function updateDots() {
   dots.forEach((dot, index) => {
     dot.classList.toggle("filled", index < entered.length);
   });
+
+  document.getElementById("delete").textContent =
+    entered.length === 0 ? "Cancel" : "Delete";
 }
 
 function checkPasscode() {
@@ -827,6 +830,12 @@ function checkPasscode() {
 }
 
 document.getElementById("delete").addEventListener("click", () => {
+  if (entered.length === 0) {
+    error.textContent = "";
+    showScreen(lockScreen);
+    return;
+  }
+
   entered = entered.slice(0, -1);
   error.textContent = "";
   updateDots();
