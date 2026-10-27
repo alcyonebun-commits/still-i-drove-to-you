@@ -797,6 +797,8 @@ document.querySelectorAll("[data-num]").forEach(button => {
   button.addEventListener("click", () => {
     if (entered.length >= 4) return;
 
+    if (navigator.vibrate) navigator.vibrate(15);
+
     entered += button.dataset.num;
     updateDots();
 
