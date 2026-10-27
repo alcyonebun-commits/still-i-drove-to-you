@@ -681,6 +681,7 @@ let isLockControl = false;
 let isSwiping = false;
 
 const lockScreenEl = document.getElementById("lockScreen");
+const wallpaperEl = document.querySelector(".wallpaper");
 
 lockScreenEl.addEventListener("touchstart", e => {
   isLockControl = Boolean(e.target.closest(".lock-control"));
@@ -708,6 +709,8 @@ lockScreenEl.addEventListener("touchmove", e => {
 
     lockScreenEl.style.transform =
       `translateY(-${Math.min(distance, window.innerHeight)}px)`;
+    wallpaperEl.style.transform =
+  `translateY(-${Math.min(distance, window.innerHeight)}px)`;
   }
 }, { passive: true });
 
@@ -726,9 +729,13 @@ lockScreenEl.addEventListener("touchend", e => {
   if (isSwiping && distance >= 65 && horizontalDistance < 60) {
     lockScreenEl.style.transition = "transform 220ms ease-out";
     lockScreenEl.style.transform = "translateY(-100%)";
+    wallpaperEl.style.transition = "transform 220ms ease-out";
+wallpaperEl.style.transform = "translateY(-100%)";
 
     setTimeout(() => {
       openPasscode();
+      wallpaperEl.style.transition = "";
+wallpaperEl.style.transform = "";
 
       lockScreenEl.style.transition = "";
       lockScreenEl.style.transform = "";
@@ -737,10 +744,14 @@ lockScreenEl.addEventListener("touchend", e => {
   } else {
     lockScreenEl.style.transition = "transform 220ms ease-out";
     lockScreenEl.style.transform = "translateY(0)";
+    wallpaperEl.style.transition = "transform 220ms ease-out";
+wallpaperEl.style.transform = "translateY(0)";
 
     setTimeout(() => {
       lockScreenEl.style.transition = "";
       lockScreenEl.style.transform = "";
+      wallpaperEl.style.transition = "";
+wallpaperEl.style.transform = "";
       isSwiping = false;
     }, 220);
   }
