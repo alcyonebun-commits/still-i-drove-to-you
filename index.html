@@ -527,6 +527,96 @@ justify-content: center;
 cursor: pointer;
 padding: 0;
 }
+  
+  /* EMERGENCY CALL SCREEN */
+.emergency-screen {
+  background: transparent;
+  text-align: center;
+  padding-top: 95px;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+.emergency-screen::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  background-image: url('./wallpaper.png');
+  background-position: center;
+  background-size: cover;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.emergency-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.emergency-number {
+  height: 32px;
+  color: white;
+  font-size: 25px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.emergency-keypad {
+  width: 270px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px 18px;
+}
+
+.emergency-key {
+  width: 76px;
+  height: 76px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(220, 220, 220, 0.22);
+  color: white;
+  font-size: 29px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+.emergency-key small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.emergency-empty {
+  visibility: hidden;
+}
+
+.emergency-call-button {
+  width: 76px;
+  height: 45px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 24px;
+  background: #30d158;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.emergency-cancel {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+  
 </style>
 </head>
 
@@ -634,6 +724,39 @@ padding: 0;
       <button class="key action" id="delete">Delete</button>
     </div>
   </section>
+  
+  <!-- EMERGENCY CALL SCREEN -->
+<section class="screen emergency-screen" id="emergencyScreen">
+  <div class="emergency-title">Emergency Call</div>
+
+  <div class="emergency-number" id="emergencyNumber"></div>
+
+  <div class="emergency-keypad">
+    <button class="key emergency-key" data-emergency-num="1">1</button>
+    <button class="key emergency-key" data-emergency-num="2">2<small>ABC</small></button>
+    <button class="key emergency-key" data-emergency-num="3">3<small>DEF</small></button>
+
+    <button class="key emergency-key" data-emergency-num="4">4<small>GHI</small></button>
+    <button class="key emergency-key" data-emergency-num="5">5<small>JKL</small></button>
+    <button class="key emergency-key" data-emergency-num="6">6<small>MNO</small></button>
+
+    <button class="key emergency-key" data-emergency-num="7">7<small>PQRS</small></button>
+    <button class="key emergency-key" data-emergency-num="8">8<small>TUV</small></button>
+    <button class="key emergency-key" data-emergency-num="9">9<small>WXYZ</small></button>
+
+    <button class="key emergency-key emergency-empty"></button>
+    <button class="key emergency-key" data-emergency-num="0">0</button>
+    <button class="key emergency-key emergency-empty"></button>
+  </div>
+
+  <button class="emergency-call-button" id="emergencyCall">
+    Call
+  </button>
+
+  <button class="emergency-cancel" id="emergencyCancel">
+    Cancel
+  </button>
+</section>
 
   <!-- HOME SCREEN -->
   <section class="screen home-screen" id="homeScreen">
@@ -690,6 +813,8 @@ padding: 0;
 const lockScreen = document.getElementById("lockScreen");
 const passScreen = document.getElementById("passScreen");
 const homeScreen = document.getElementById("homeScreen");
+const emergencyScreen = document.getElementById("emergencyScreen");
+const emergencyNumber = document.getElementById("emergencyNumber");
 const error = document.getElementById("error");
 const dots = document.querySelectorAll(".dot");
 
@@ -845,7 +970,25 @@ document.getElementById("cancel").addEventListener("click", () => {
   entered = "";
   updateDots();
   error.textContent = "";
-  showScreen(lockScreen);
+  emergencyNumber.textContent = "";
+  showScreen(emergencyScreen);
+});
+
+document.getElementById("emergencyCancel").addEventListener("click", () => {
+  emergencyNumber.textContent = "";
+  showScreen(passScreen);
+});
+
+document.querySelectorAll("[data-emergency-num]").forEach(button => {
+  button.addEventListener("click", () => {
+    if (emergencyNumber.textContent.length >= 15) return;
+    emergencyNumber.textContent += button.dataset.emergencyNum;
+  });
+});
+
+document.getElementById("emergencyCall").addEventListener("click", () => {
+  if (!emergencyNumber.textContent) return;
+  alert("Simulated emergency call — no real call was made.");
 });
 
 document.querySelectorAll("[data-app]").forEach(app => {
