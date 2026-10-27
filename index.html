@@ -675,8 +675,6 @@ function openPasscode() {
   showScreen(passScreen);
 }
 
-document.getElementById("swipeArea").addEventListener("click", openPasscode);
-
 let startY = 0;
 let startX = 0;
 
@@ -693,8 +691,11 @@ if (e.target.closest(".lock-control")) return;
 const endY = e.changedTouches[0].clientY;
 const endX = e.changedTouches[0].clientX;
 
-if (startY - endY > 35 && Math.abs(startX - endX) < 60) {
-openPasscode();
+if (
+  startY - endY > window.innerHeight * 0.5 &&
+  Math.abs(startX - endX) < 60
+) {
+  openPasscode();
 }
 }, {passive: true});
 
