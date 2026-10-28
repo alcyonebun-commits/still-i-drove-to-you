@@ -616,6 +616,44 @@ padding: 0;
   color: white;
   font-size: 14px;
 }
+
+  /* CALLING SCREEN */
+.calling-screen {
+  background: #171717;
+  color: white;
+  text-align: center;
+  padding-top: 150px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+.calling-number {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.calling-status {
+  color: #bdbdbd;
+  font-size: 16px;
+}
+
+.calling-end {
+  display: block;
+  width: 68px;
+  height: 68px;
+  margin: 190px auto 0;
+  border: none;
+  border-radius: 50%;
+  background: #ff453a;
+  color: white;
+  font-size: 28px;
+}
+
+.calling-end-label {
+  margin-top: 10px;
+  color: white;
+  font-size: 13px;
+}
   
 </style>
 </head>
@@ -758,6 +796,21 @@ padding: 0;
   </button>
 </section>
 
+  <!-- CALLING SCREEN -->
+<section class="screen calling-screen" id="callingScreen">
+  <div class="calling-number" id="callingNumber"></div>
+
+  <div class="calling-status" id="callingStatus">
+    Calling…
+  </div>
+
+  <button class="calling-end" id="callingEnd">
+    ✕
+  </button>
+
+  <div class="calling-end-label">End Call</div>
+</section>
+
   <!-- HOME SCREEN -->
   <section class="screen home-screen" id="homeScreen">
     <div class="welcome">Good morning, Milan.</div>
@@ -815,6 +868,9 @@ const passScreen = document.getElementById("passScreen");
 const homeScreen = document.getElementById("homeScreen");
 const emergencyScreen = document.getElementById("emergencyScreen");
 const emergencyNumber = document.getElementById("emergencyNumber");
+const callingScreen = document.getElementById("callingScreen");
+const callingNumber = document.getElementById("callingNumber");
+const callingStatus = document.getElementById("callingStatus");
 const error = document.getElementById("error");
 const dots = document.querySelectorAll(".dot");
 
@@ -987,8 +1043,25 @@ document.querySelectorAll("[data-emergency-num]").forEach(button => {
 });
 
 document.getElementById("emergencyCall").addEventListener("click", () => {
-  if (!emergencyNumber.textContent) return;
-  alert("Simulated emergency call — no real call was made.");
+  const number = emergencyNumber.textContent;
+
+  if (!number) return;
+
+  callingNumber.textContent = number;
+  callingStatus.textContent = "Calling…";
+
+  showScreen(callingScreen);
+
+  setTimeout(() => {
+    callingStatus.textContent = "Call Failed";
+  }, 3000);
+});
+
+  document.getElementById("callingEnd").addEventListener("click", () => {
+  emergencyNumber.textContent = "";
+  callingNumber.textContent = "";
+  callingStatus.textContent = "Calling…";
+  showScreen(emergencyScreen);
 });
 
 document.querySelectorAll("[data-app]").forEach(app => {
