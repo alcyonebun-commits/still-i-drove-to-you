@@ -361,7 +361,7 @@ text-shadow: 0 1px 6px #222;
 }
 
 .home-screen {
-  background: linear-gradient(155deg, #8295a0, #343c53 60%, #1d2336);
+  background: url("home-wallpaper.png") center center / cover no-repeat;
   padding: 70px 24px 35px;
 }
 
@@ -654,6 +654,79 @@ padding: 0;
   color: white;
   font-size: 13px;
 }
+
+/* HOME SCREEN WIDGETS */
+.widget-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 12px;
+  width: 100%;
+  margin: 22px auto 28px;
+}
+
+.weather-widget,
+.spotify-widget {
+  min-width: 0;
+  height: 155px;
+  padding: 14px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: white;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.widget-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.weather-icon {
+  font-size: 28px;
+  margin-top: 8px;
+}
+
+.weather-temp {
+  font-size: 27px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.weather-desc {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.spotify-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.spotify-song {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 22px;
+}
+
+.spotify-artist {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+.spotify-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 14px;
+  font-size: 14px;
+}
   
 </style>
 </head>
@@ -815,6 +888,30 @@ padding: 0;
   <section class="screen home-screen" id="homeScreen">
     <div class="welcome">Good morning, Milan.</div>
     <div class="home-date" id="homeDate">Your little corner of the world.</div>
+    <div class="widget-row">
+  <div class="weather-widget">
+    <div class="widget-label">Cuaca</div>
+    <div class="weather-icon">☀️</div>
+    <div class="weather-temp">28°</div>
+    <div class="weather-desc">Cerah</div>
+  </div>
+
+  <div class="spotify-widget">
+    <div class="spotify-top">
+      <span>🎵 Spotify</span>
+      <span>♫</span>
+    </div>
+
+    <div class="spotify-song">Now Playing</div>
+    <div class="spotify-artist">Milan's playlist</div>
+
+    <div class="spotify-controls">
+      <span>◀◀</span>
+      <span>▶</span>
+      <span>▶▶</span>
+    </div>
+  </div>
+    </div>
 
     <div class="app-grid">
       <div class="app" data-app="Photos">
