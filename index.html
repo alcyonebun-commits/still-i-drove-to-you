@@ -670,6 +670,18 @@ padding: 0;
   margin: 5px auto 28px;
 }
 
+  .widget-item {
+min-width: 0;
+text-align: center;
+}
+
+.widget-name {
+color: white;
+font-size: 12px;
+margin-top: 8px;
+text-align: center;
+}
+
 .weather-widget,
 .spotify-widget {
   min-width: 0;
@@ -923,6 +935,8 @@ padding: 0;
 
   <div class="weather-temp">28°</div>
 
+  <div class="weather-temp">28°</div>
+
   <div class="weather-icon">
     <svg viewBox="0 0 40 40" aria-label="Sunny">
       <circle cx="20" cy="20" r="7" fill="white"/>
@@ -932,10 +946,11 @@ padding: 0;
       </g>
     </svg>
   </div>
-      
-<div class="weather-condition">Sunny</div>
+
+  <div class="weather-condition">Sunny</div>
   <div class="weather-desc">H: 30° L: 24°</div>
-    </div>
+</div>
+<div class="widget-name">Weather</div>
 
   <div class="spotify-widget">
     <div class="spotify-top">
@@ -944,15 +959,15 @@ padding: 0;
     </div>
 
     <div class="spotify-song">Now Playing</div>
-    <div class="spotify-artist">Milan's playlist</div>
+  <div class="spotify-artist">Milan's playlist</div>
 
-    <div class="spotify-controls">
-      <span>◀◀</span>
-      <span>▶</span>
-      <span>▶▶</span>
-    </div>
+  <div class="spotify-controls">
+    <span>◀◀</span>
+    <span>▶</span>
+    <span>▶▶</span>
   </div>
-    </div>
+</div>
+<div class="widget-name">Spotify</div>
 
     <div class="app-grid">
       <div class="app" data-app="Photos">
