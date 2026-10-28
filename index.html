@@ -445,11 +445,11 @@ transform: translateY(-20px);
   .lock-widgets {
 display: flex;
 gap: 10px;
-width: min(340px, calc(100vw - 52px));
-margin: 28px auto 0;
-align-items: stretch;
-justify-content: center;
-}
+width: 100%;
+margin: 28px 0 0;
+align-items: flex-start;
+justify-content: flex-start;
+  }
 
 .widget {
 background: rgba(255, 255, 255, 0.13);
@@ -491,7 +491,9 @@ margin-top: 2px;
 }
 
 .reminder-widget {
-flex: 1;
+flex: 0 1 auto;
+width: fit-content;
+max-width: 100%;
 text-align: left;
 }
 
