@@ -1733,5 +1733,113 @@ function stopCallingSound() {
   
 </script>
 
+  <script>
+const milanPlaylist = [
+  {
+    title: "Spring Into Summer",
+    artist: "Lizzy McAlpine",
+    videoId: "Mwb6BbrogAY"
+  },
+  {
+    title: "Change My Mind",
+    artist: "One Direction",
+    videoId: "GANTI_ID_VIDEO_2"
+  },
+  {
+    title: "Tak Ada Ujungnya",
+    artist: "Rony Parulian",
+    videoId: "R1zjcsKfZAg"
+  },
+  {
+    title: "Twilight",
+    artist: "EVAN",
+    videoId: "GANTI_ID_VIDEO_4"
+  },
+  {
+    title: "Catching Feelings",
+    artist: "Justin Bieber",
+    videoId: "axyfEusEuho"
+  },
+  {
+    title: "Orange Flower (You Complete Me)",
+    artist: "ENHYPEN",
+    videoId: "iwBfCHvFzPU"
+  },
+  {
+    title: "So High School",
+    artist: "Taylor Swift",
+    videoId: "GANTI_ID_VIDEO_7"
+  }
+];
+
+let milanCurrentTrack = 0;
+let milanPlayer;
+
+function onYouTubeIframeAPIReady() {
+  milanPlayer = new YT.Player("youtubePlayer", {
+    width: "200",
+    height: "200",
+    videoId: milanPlaylist[0].videoId,
+    playerVars: {
+      playsinline: 1,
+      origin: window.location.origin
+    },
+    events: {
+      onReady: () => updateMilanTrack()
+    }
+  });
+}
+
+function updateMilanTrack() {
+  const track = milanPlaylist[milanCurrentTrack];
+
+  const title = document.getElementById("spotify-song");
+  const artist = document.getElementById("spotify-artist");
+
+  if (title) title.textContent = track.title;
+  if (artist) artist.textContent = track.artist;
+}
+
+function playMilanTrack(index) {
+  if (!milanPlayer || !milanPlayer.loadVideoById) return;
+
+  milanCurrentTrack =
+    (index + milanPlaylist.length) % milanPlaylist.length;
+
+  const track = milanPlaylist[milanCurrentTrack];
+
+  if (track.videoId.startsWith("GANTI_")) {
+    updateMilanTrack();
+    alert("Video untuk lagu ini belum diatur.");
+    return;
+  }
+
+  milanPlayer.loadVideoById(track.videoId);
+  updateMilanTrack();
+}
+
+function toggleMilanPlayback() {
+  if (!milanPlayer || !milanPlayer.getPlayerState) return;
+
+  if (milanPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+    milanPlayer.pauseVideo();
+  } else {
+    milanPlayer.playVideo();
+  }
+}
+
+function nextMilanTrack() {
+  playMilanTrack(milanCurrentTrack + 1);
+}
+
+function previousMilanTrack() {
+  playMilanTrack(milanCurrentTrack - 1);
+}
+
+const youtubeScript = document.createElement("script");
+youtubeScript.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(youtubeScript);
+  </script>
+
 </body>
 </html>
