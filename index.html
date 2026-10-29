@@ -1026,6 +1026,60 @@ margin: 0;
 border-top: 1px solid rgba(255, 255, 255, 0.2);
 font-size: 13px;
 }
+
+  /* MUSIC PLAYER CONTROLS */
+.spotify-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 20px 0;
+}
+
+.spotify-controls button {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.spotify-controls button svg {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+}
+
+.spotify-controls button:nth-child(2) {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #121212;
+}
+
+.spotify-controls button:nth-child(2) svg {
+  width: 27px;
+  height: 27px;
+}
+
+.spotify-controls button:active {
+  transform: scale(0.92);
+}
+
+.spotify-controls button:hover {
+  color: #ffffff;
+}
+
+.spotify-controls button:nth-child(2):hover {
+  color: #121212;
+}
   
 </style>
 </head>
@@ -1202,13 +1256,13 @@ font-size: 13px;
     <div class="spotify-playlist-info">7 songs</div>
 
     <div class="spotify-song-list">
-      <div class="spotify-track">Song 1</div>
-      <div class="spotify-track">Song 2</div>
-      <div class="spotify-track">Song 3</div>
-      <div class="spotify-track">Song 4</div>
-      <div class="spotify-track">Song 5</div>
-      <div class="spotify-track">Song 6</div>
-      <div class="spotify-track">Song 7</div>
+  <div class="spotify-track" onclick="playMilanTrack(0)">Spring Into Summer — Lizzy McAlpine</div>
+  <div class="spotify-track" onclick="playMilanTrack(1)">Change My Mind — One Direction</div>
+  <div class="spotify-track" onclick="playMilanTrack(2)">Tak Ada Ujungnya — Rony Parulian</div>
+  <div class="spotify-track" onclick="playMilanTrack(3)">TWILIGHT — EVAN</div>
+  <div class="spotify-track" onclick="playMilanTrack(4)">Catching Feelings — Justin Bieber</div>
+  <div class="spotify-track" onclick="playMilanTrack(5)">Orange Flower (You Complete Me) — ENHYPEN</div>
+  <div class="spotify-track" onclick="playMilanTrack(6)">So High School — Taylor Swift</div>
     </div>
 
     </div>
@@ -1258,9 +1312,23 @@ font-size: 13px;
   <div class="spotify-artist">Milan's playlist</div>
 
   <div class="spotify-controls">
-    <span>◀◀</span>
-    <span>▶</span>
-    <span>▶▶</span>
+  <button type="button" onclick="previousMilanTrack()" aria-label="Previous song">
+    <svg viewBox="0 0 24 24">
+      <path d="M6 5v14M19 5L8 12l11 7z"/>
+    </svg>
+  </button>
+
+  <button type="button" onclick="toggleMilanPlayback()" aria-label="Play or pause" id="milanPlayButton">
+    <svg viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </button>
+
+  <button type="button" onclick="nextMilanTrack()" aria-label="Next song">
+    <svg viewBox="0 0 24 24">
+      <path d="M18 5v14M5 5l11 7-11 7z"/>
+    </svg>
+  </button>
   </div>
 
 </div>
@@ -1785,7 +1853,8 @@ function onYouTubeIframeAPIReady() {
       origin: window.location.origin
     },
     events: {
-      onReady: () => updateMilanTrack()
+      onReady: () => updateMilanTrack(),
+onStateChange: updateMilanPlayButton
     }
   });
 }
@@ -1817,6 +1886,23 @@ function playMilanTrack(index) {
   milanPlayer.loadVideoById(track.videoId);
   updateMilanTrack();
 }
+
+    function updateMilanPlayButton(event) {
+  const button = document.getElementById("milanPlayButton");
+  if (!button) return;
+
+  const isPlaying =
+    event && event.data === YT.PlayerState.PLAYING;
+
+  button.innerHTML = isPlaying
+    ? '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+    : '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+  button.setAttribute(
+    "aria-label",
+    isPlaying ? "Pause" : "Play"
+  );
+    }
 
 function toggleMilanPlayback() {
   if (!milanPlayer || !milanPlayer.getPlayerState) return;
