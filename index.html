@@ -262,12 +262,22 @@ text-shadow: 0 1px 6px #222;
 }
 
 .passcode-screen {
-  background: transparent;
-  text-align: center;
-  padding-top: 95px;
-  overflow: hidden;
-  isolation: isolate;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+background: transparent;
+text-align: center;
+padding-top: 95px;
+overflow: hidden;
+isolation: isolate;
+font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+animation: passcodeFadeIn 0.35s ease-out;
+}
+
+@keyframes passcodeFadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
 }
   .passcode-screen::before {
   content: "";
