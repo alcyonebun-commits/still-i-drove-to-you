@@ -1206,8 +1206,6 @@ swipeText.style.opacity = Math.max(0, 1 - distance / 120);
 
     lockScreenEl.style.transform =
       `translateY(-${Math.min(distance, window.innerHeight)}px)`;
-    wallpaperEl.style.transform =
-  `translateY(-${Math.min(distance, window.innerHeight)}px)`;
   }
 }, { passive: true });
 
@@ -1226,8 +1224,6 @@ lockScreenEl.addEventListener("touchend", e => {
   if (isSwiping && distance >= 65 && horizontalDistance < 60) {
     lockScreenEl.style.transition = "transform 220ms ease-out";
     lockScreenEl.style.transform = "translateY(-100%)";
-    wallpaperEl.style.transition = "transform 220ms ease-out";
-wallpaperEl.style.transform = "translateY(-100%)";
 
     setTimeout(() => {
       openPasscode();
@@ -1241,14 +1237,10 @@ wallpaperEl.style.transform = "";
   } else {
     lockScreenEl.style.transition = "transform 220ms ease-out";
     lockScreenEl.style.transform = "translateY(0)";
-    wallpaperEl.style.transition = "transform 220ms ease-out";
-wallpaperEl.style.transform = "translateY(0)";
 
     setTimeout(() => {
       lockScreenEl.style.transition = "";
       lockScreenEl.style.transform = "";
-      wallpaperEl.style.transition = "";
-wallpaperEl.style.transform = "";
       swipeText.style.opacity = "1";
       isSwiping = false;
     }, 220);
