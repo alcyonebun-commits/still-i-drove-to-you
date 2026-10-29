@@ -1296,8 +1296,9 @@ document.querySelectorAll("[data-num]").forEach(button => {
 
     if (navigator.vibrate) navigator.vibrate(15);
 
-    entered += button.dataset.num;
-    updateDots();
+    error.textContent = "";
+entered += button.dataset.num;
+updateDots();
 
     if (entered.length === 4) {
       setTimeout(checkPasscode, 180);
