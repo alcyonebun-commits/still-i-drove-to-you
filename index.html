@@ -1159,6 +1159,8 @@ const homeScreen = document.getElementById("homeScreen");
 const emergencyScreen = document.getElementById("emergencyScreen");
 const emergencyNumber = document.getElementById("emergencyNumber");
 const callingScreen = document.getElementById("callingScreen");
+  let callingSoundInterval = null;
+let callingFailTimeout = null;
 const callingNumber = document.getElementById("callingNumber");
 const callingStatus = document.getElementById("callingStatus");
 const error = document.getElementById("error");
@@ -1437,6 +1439,19 @@ setInterval(updateTime, 1000);
 
   oscillator.onended = () => audioContext.close();
   }
+
+  function startCallingSound() {
+  stopCallingSound();
+  playKeypadSound();
+  callingSoundInterval = setInterval(playKeypadSound, 1000);
+}
+
+function stopCallingSound() {
+  if (callingSoundInterval !== null) {
+    clearInterval(callingSoundInterval);
+    callingSoundInterval = null;
+  }
+}
   
 </script>
 
