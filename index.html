@@ -1177,6 +1177,9 @@ let isSwiping = false;
 
 const lockScreenEl = document.getElementById("lockScreen");
 const wallpaperEl = document.querySelector(".wallpaper");
+const lockContentEl = document.querySelector(".lock-content");
+const lockControlsEl = document.querySelector(".lock-controls");
+const swipeAreaEl = document.getElementById("swipeArea");
 
 lockScreenEl.addEventListener("touchstart", e => {
   isLockControl = Boolean(e.target.closest(".lock-control"));
