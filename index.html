@@ -839,6 +839,44 @@ display: none;
 
 .spotify-back,
 .spotify-more {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.spotify-back svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spotify-more svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.spotify-back:active,
+.spotify-more:active {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(0.95);
+}
+
+.spotify-back,
+.spotify-more {
   width: 36px;
   height: 36px;
   border: none;
