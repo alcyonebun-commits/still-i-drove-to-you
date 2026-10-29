@@ -1296,6 +1296,7 @@ function checkPasscode() {
 document.getElementById("delete").addEventListener("click", () => {
   if (entered.length === 0) {
     error.textContent = "";
+    document.getElementById("swipeText").style.opacity = "1";
     showScreen(lockScreen);
     return;
   }
