@@ -1207,8 +1207,11 @@ swipeText.style.opacity = Math.max(0, 1 - distance / 120);
   if (distance > 0 && horizontalDistance < 60) {
     isSwiping = true;
 
-    lockScreenEl.style.transform =
-      `translateY(-${Math.min(distance, window.innerHeight)}px)`;
+    const moveDistance = Math.min(distance, window.innerHeight);
+
+lockContentEl.style.transform = `translateY(-${moveDistance}px)`;
+lockControlsEl.style.transform = `translateY(-${moveDistance}px)`;
+swipeAreaEl.style.transform = `translateY(-${moveDistance}px)`;
   }
 }, { passive: true });
 
@@ -1225,28 +1228,53 @@ lockScreenEl.addEventListener("touchend", e => {
   const horizontalDistance = Math.abs(startX - endX);
 
   if (isSwiping && distance >= 65 && horizontalDistance < 60) {
-    lockScreenEl.style.transition = "transform 220ms ease-out";
-    lockScreenEl.style.transform = "translateY(-100%)";
+    lockContentEl.style.transition = "transform 220ms ease-out";
+lockContentEl.style.transform = "translateY(-100%)";
+
+lockControlsEl.style.transition = "transform 220ms ease-out";
+lockControlsEl.style.transform = "translateY(-100%)";
+
+swipeAreaEl.style.transition = "transform 220ms ease-out";
+swipeAreaEl.style.transform = "translateY(-100%)";
 
     setTimeout(() => {
-      openPasscode();
-      wallpaperEl.style.transition = "";
-wallpaperEl.style.transform = "";
+  openPasscode();
 
-      lockScreenEl.style.transition = "";
-      lockScreenEl.style.transform = "";
-      isSwiping = false;
-    }, 220);
-  } else {
-    lockScreenEl.style.transition = "transform 220ms ease-out";
-    lockScreenEl.style.transform = "translateY(0)";
+  lockContentEl.style.transition = "";
+  lockContentEl.style.transform = "";
 
-    setTimeout(() => {
-      lockScreenEl.style.transition = "";
-      lockScreenEl.style.transform = "";
-      swipeText.style.opacity = "1";
-      isSwiping = false;
-    }, 220);
+  lockControlsEl.style.transition = "";
+  lockControlsEl.style.transform = "";
+
+  swipeAreaEl.style.transition = "";
+  swipeAreaEl.style.transform = "";
+
+  isSwiping = false;
+}, 220);
+
+} else {
+  lockContentEl.style.transition = "transform 220ms ease-out";
+  lockContentEl.style.transform = "translateY(0)";
+
+  lockControlsEl.style.transition = "transform 220ms ease-out";
+  lockControlsEl.style.transform = "translateY(0)";
+
+  swipeAreaEl.style.transition = "transform 220ms ease-out";
+  swipeAreaEl.style.transform = "translateY(0)";
+
+  setTimeout(() => {
+    lockContentEl.style.transition = "";
+    lockContentEl.style.transform = "";
+
+    lockControlsEl.style.transition = "";
+    lockControlsEl.style.transform = "";
+
+    swipeAreaEl.style.transition = "";
+    swipeAreaEl.style.transform = "";
+
+    swipeText.style.opacity = "1";
+    isSwiping = false;
+  }, 220);
   }
 
   isLockControl = false;
