@@ -1142,8 +1142,19 @@ font-size: 13px;
   <div class="spotify-page">
 
     <div class="spotify-toolbar">
-  <button class="spotify-back" onclick="showScreen(document.getElementById('homeScreen'))">←</button>
-  <button class="spotify-more">⋮</button>
+  <button class="spotify-back" onclick="showScreen(document.getElementById('homeScreen'))" aria-label="Back">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 18L9 12L15 6" />
+    </svg>
+  </button>
+
+  <button class="spotify-more" aria-label="More options">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="5" r="1.5" />
+      <circle cx="12" cy="12" r="1.5" />
+      <circle cx="12" cy="19" r="1.5" />
+    </svg>
+  </button>
     </div>
 
     <div class="spotify-playlist-cover">🎧</div>
