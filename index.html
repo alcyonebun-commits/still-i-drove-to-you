@@ -1372,20 +1372,33 @@ document.getElementById("emergencyCall").addEventListener("click", () => {
 
   if (!number) return;
 
-  callingNumber.textContent = number;
-  callingStatus.textContent = "Calling…";
+callingNumber.textContent = number;
+callingStatus.textContent = "Calling…";
 
-  showScreen(callingScreen);
+if (navigator.vibrate) navigator.vibrate(50);
 
-  setTimeout(() => {
-    callingStatus.textContent = "Call Failed";
-  }, 3000);
+showScreen(callingScreen);
+startCallingSound();
+
+callingFailTimeout = setTimeout(() => {
+  stopCallingSound();
+  callingStatus.textContent = "Call Failed";
+  callingFailTimeout = null;
+}, 3000);
 });
 
   document.getElementById("callingEnd").addEventListener("click", () => {
+  stopCallingSound();
+
+  if (callingFailTimeout !== null) {
+    clearTimeout(callingFailTimeout);
+    callingFailTimeout = null;
+  }
+
   emergencyNumber.textContent = "";
   callingNumber.textContent = "";
   callingStatus.textContent = "Calling…";
+
   showScreen(emergencyScreen);
 });
 
