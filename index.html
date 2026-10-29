@@ -1356,7 +1356,12 @@ document.getElementById("emergencyCancel").addEventListener("click", () => {
 document.querySelectorAll("[data-emergency-num]").forEach(button => {
   button.addEventListener("click", () => {
     if (emergencyNumber.textContent.length >= 15) return;
+
+    if (navigator.vibrate) navigator.vibrate(25);
+
     emergencyNumber.textContent += button.dataset.emergencyNum;
+
+    playKeypadSound();
   });
 });
 
@@ -1409,6 +1414,30 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
+  function playKeypadSound() {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = 900;
+
+  gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioContext.currentTime + 0.08
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.08);
+
+  oscillator.onended = () => audioContext.close();
+  }
+  
 </script>
 
 </body>
