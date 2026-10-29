@@ -551,14 +551,24 @@ cursor: pointer;
 padding: 0;
 }
   
-  /* EMERGENCY CALL SCREEN */
+/* EMERGENCY CALL SCREEN */
 .emergency-screen {
-  background: transparent;
-  text-align: center;
-  padding-top: 95px;
-  overflow: hidden;
-  isolation: isolate;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+background: transparent;
+text-align: center;
+padding-top: 95px;
+overflow: hidden;
+isolation: isolate;
+font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+animation: emergencyFadeIn 0.25s ease-out;
+}
+
+@keyframes emergencyFadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
 }
 
 .emergency-screen::before {
