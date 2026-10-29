@@ -1429,7 +1429,18 @@ function updateTime() {
 }
 
 updateTime();
-setInterval(updateTime, 1000);
+
+setInterval(() => {
+  updateTime();
+}, 1000);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    updateTime();
+  }
+});
+
+window.addEventListener("focus", updateTime);
 
   function playKeypadSound() {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
