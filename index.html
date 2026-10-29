@@ -1198,6 +1198,8 @@ lockScreenEl.addEventListener("touchmove", e => {
 
   const distance = startY - currentY;
   const horizontalDistance = Math.abs(startX - currentX);
+  const swipeText = document.getElementById("swipeText");
+swipeText.style.opacity = Math.max(0, 1 - distance / 120);
 
   if (distance > 0 && horizontalDistance < 60) {
     isSwiping = true;
