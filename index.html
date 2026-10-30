@@ -945,15 +945,25 @@ color: #191919;
   gap: 4px;
 }
 
+/* MILAN SONG LIST */
+.spotify-song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 12px;
+}
+
 .spotify-track {
   padding: 14px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   font-size: 14px;
-  color: #191919;
+  font-weight: 500;
   line-height: 1.5;
+  color: #292929;
   cursor: pointer;
   transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .spotify-track:hover {
@@ -963,7 +973,6 @@ color: #191919;
 .spotify-track:active {
   background: #eeeeee;
 }
-
 .weather-page {
 min-height: 100%;
 box-sizing: border-box;
