@@ -1096,6 +1096,49 @@ font-size: 13px;
 .spotify-controls button:nth-child(2):hover {
   color: #121212;
 }
+
+  /* MILAN PLAYLIST COVER */
+.milan-playlist-cover {
+  width: 250px;
+  height: 250px;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto 24px;
+  padding: 22px;
+  background: #f1efe9;
+  color: #252525;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-small-text {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #77736c;
+  margin-bottom: 18px;
+}
+
+.cover-main-title {
+  font-family: Georgia, serif;
+  font-size: 55px;
+  font-weight: normal;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+.cover-bottom-text {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #77736c;
+  margin-top: 20px;
+}
   
 </style>
 </head>
@@ -1265,6 +1308,12 @@ font-size: 13px;
   </button>
     </div>
 
+    <div class="milan-playlist-cover">
+  <div class="cover-small-text">A COLLECTION OF MOMENTS</div>
+  <div class="cover-main-title">milan.</div>
+  <div class="cover-bottom-text">songs that feel like home ♡</div>
+    </div>
+    
     <div id="youtubePlayer" style="width: 200px; height: 200px; margin: 0 auto 24px;"></div>
     <div class="spotify-controls">
   <button type="button" onclick="previousMilanTrack()" aria-label="Previous song">
