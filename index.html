@@ -1192,6 +1192,19 @@ font-size: 13px;
   line-height: 1.5;
   color: #858585;
 }
+
+  .youtube-player-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 24px;
+}
+
+#youtubePlayer {
+  width: 200px;
+  height: 200px;
+}
   
 </style>
 </head>
@@ -1361,7 +1374,9 @@ font-size: 13px;
   </button>
     </div>
     
-    <div id="youtubePlayer" style="width: 200px; height: 200px; margin: 0 auto 24px;"></div>
+    <div class="youtube-player-container">
+  <div id="youtubePlayer"></div>
+    </div>
     <div class="spotify-controls">
   <button type="button" onclick="previousMilanTrack()" aria-label="Previous song">
     <svg viewBox="0 0 24 24">
