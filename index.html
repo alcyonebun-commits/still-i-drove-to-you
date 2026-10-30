@@ -1139,6 +1139,50 @@ font-size: 13px;
   color: #77736c;
   margin-top: 20px;
 }
+
+  /* MILAN MUSIC INFORMATION */
+.spotify-playlist-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #8b8b8b;
+  margin-bottom: 10px;
+}
+
+.spotify-playlist-title {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  color: #191919;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.spotify-playlist-info {
+  font-size: 12px;
+  color: #888888;
+  margin-bottom: 22px;
+}
+
+.milan-now-playing {
+  margin: 24px 0 20px;
+  text-align: left;
+}
+
+.milan-track-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.3px;
+  color: #191919;
+}
+
+.milan-track-artist {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #858585;
+}
   
 </style>
 </head>
@@ -1335,9 +1379,15 @@ font-size: 13px;
   </button>
     </div>
 
-    <div class="spotify-playlist-label">PLAYLIST</div>
-    <div class="spotify-playlist-title" id="spotify-song">Milan's playlist</div>
-<div class="spotify-playlist-info" id="spotify-artist">7 songs</div>
+    <div class="spotify-playlist-label">YOUR MUSIC, YOUR MOMENTS</div>
+
+<div class="spotify-playlist-title">Milan's playlist</div>
+<div class="spotify-playlist-info">7 songs</div>
+
+<div class="milan-now-playing">
+  <div class="milan-track-title" id="spotify-song">Spring Into Summer</div>
+  <div class="milan-track-artist" id="spotify-artist">Lizzy McAlpine</div>
+</div>
 
     <div class="spotify-song-list">
   <div class="spotify-track" onclick="playMilanTrack(0)">Spring Into Summer — Lizzy McAlpine</div>
