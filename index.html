@@ -2303,20 +2303,26 @@ function playMilanTrack(index) {
 }
 
     function updateMilanPlayButton(event) {
-  const button = document.getElementById("milanPlayButton");
-  if (!button) return;
+  const buttons = [
+    document.getElementById("milanPlayButton"),
+    document.getElementById("milanActionPlayButton")
+  ];
 
   const isPlaying =
     event && event.data === YT.PlayerState.PLAYING;
 
-  button.innerHTML = isPlaying
-    ? '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
-    : '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  buttons.forEach(button => {
+    if (!button) return;
 
-  button.setAttribute(
-    "aria-label",
-    isPlaying ? "Pause" : "Play"
-  );
+    button.innerHTML = isPlaying
+      ? '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+      : '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+    button.setAttribute(
+      "aria-label",
+      isPlaying ? "Pause" : "Play"
+    );
+  });
     }
 
 function toggleMilanPlayback() {
