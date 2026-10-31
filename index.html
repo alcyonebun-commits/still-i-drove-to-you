@@ -2337,6 +2337,14 @@ function playMilanTrack(index) {
   });
     }
 
+    function handleMilanPlayerState(event) {
+  updateMilanPlayButton(event);
+
+  if (event.data === YT.PlayerState.ENDED) {
+    nextMilanTrack();
+  }
+    }
+
 function toggleMilanPlayback() {
   if (!milanPlayer || !milanPlayer.getPlayerState) return;
 
