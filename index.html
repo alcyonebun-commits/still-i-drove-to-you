@@ -2338,6 +2338,23 @@ function toggleMilanPlayback() {
   }
 }
 
+function toggleMilanShuffle() {
+  milanShuffleOn = !milanShuffleOn;
+
+  const button = document.getElementById("milanShuffleButton");
+
+  if (!button) return;
+
+  button.style.color = milanShuffleOn ? "#A7B398" : "#333333";
+  button.setAttribute("aria-pressed", String(milanShuffleOn));
+
+  if (milanShuffleOn) {
+    milanLastShuffledTrack = milanCurrentTrack;
+  } else {
+    milanLastShuffledTrack = -1;
+  }
+}
+    
 function nextMilanTrack() {
   playMilanTrack(milanCurrentTrack + 1);
 }
