@@ -2258,6 +2258,9 @@ const milanPlaylist = [
 let milanCurrentTrack = 0;
 let milanPlayer;
 
+    let milanShuffleOn = false;
+let milanLastShuffledTrack = -1;
+
 function onYouTubeIframeAPIReady() {
   milanPlayer = new YT.Player("youtubePlayer", {
     width: "200",
