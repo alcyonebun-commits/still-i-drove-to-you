@@ -2356,7 +2356,21 @@ function toggleMilanShuffle() {
 }
     
 function nextMilanTrack() {
-  playMilanTrack(milanCurrentTrack + 1);
+  if (milanShuffleOn) {
+    let nextTrack;
+
+    do {
+      nextTrack = Math.floor(Math.random() * milanPlaylist.length);
+    } while (
+      nextTrack === milanCurrentTrack &&
+      milanPlaylist.length > 1
+    );
+
+    milanLastShuffledTrack = nextTrack;
+    playMilanTrack(nextTrack);
+  } else {
+    playMilanTrack(milanCurrentTrack + 1);
+  }
 }
 
 function previousMilanTrack() {
