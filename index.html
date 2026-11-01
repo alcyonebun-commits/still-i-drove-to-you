@@ -2341,9 +2341,10 @@ function playMilanTrack(index) {
 
     function updateMilanPlayButton(event) {
   const buttons = [
-    document.getElementById("milanPlayButton"),
-    document.getElementById("milanActionPlayButton")
-  ];
+  document.getElementById("milanPlayButton"),
+  document.getElementById("milanActionPlayButton"),
+  document.getElementById("milanPanelPlayButton")
+];
 
   const isPlaying =
     event && event.data === YT.PlayerState.PLAYING;
