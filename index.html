@@ -2312,9 +2312,13 @@ function updateMilanTrack() {
 
   const title = document.getElementById("spotify-song");
   const artist = document.getElementById("spotify-artist");
+  const panelTitle = document.getElementById("milanPlayerTitle");
+  const panelArtist = document.getElementById("milanPlayerArtist");
 
   if (title) title.textContent = track.title;
   if (artist) artist.textContent = track.artist;
+  if (panelTitle) panelTitle.textContent = track.title;
+  if (panelArtist) panelArtist.textContent = track.artist;
 }
 
 function playMilanTrack(index) {
