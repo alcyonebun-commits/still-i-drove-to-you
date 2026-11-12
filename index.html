@@ -2524,6 +2524,9 @@ function playMilanTrack(index) {
     return;
   }
 
+  const progressFill = document.getElementById("milanProgressFill");
+if (progressFill) progressFill.style.width = "0%";
+
   milanPlayer.loadVideoById(track.videoId);
   updateMilanTrack();
 }
