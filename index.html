@@ -2419,11 +2419,13 @@ function updateMilanTrack() {
   const artist = document.getElementById("spotify-artist");
   const panelTitle = document.getElementById("milanPlayerTitle");
   const panelArtist = document.getElementById("milanPlayerArtist");
+  const panelCover = document.getElementById("milanPanelCover");
 
   if (title) title.textContent = track.title;
   if (artist) artist.textContent = track.artist;
   if (panelTitle) panelTitle.textContent = track.title;
   if (panelArtist) panelArtist.textContent = track.artist;
+  if (panelCover) panelCover.src = track.cover;
 
   document.querySelectorAll(".spotify-track").forEach((row, index) => {
     row.classList.toggle("active-track", index === milanCurrentTrack);
