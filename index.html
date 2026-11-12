@@ -2521,7 +2521,9 @@ function playMilanTrack(index) {
     (index + milanPlaylist.length) % milanPlaylist.length;
 
   const track = milanPlaylist[milanCurrentTrack];
-
+const panel = document.getElementById("milanPlayerPanel");
+if (panel) panel.style.display = "flex";
+  
   if (track.videoId.startsWith("GANTI_")) {
     updateMilanTrack();
     alert("Video untuk lagu ini belum diatur.");
