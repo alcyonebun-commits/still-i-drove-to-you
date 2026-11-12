@@ -2466,7 +2466,10 @@ function onYouTubeIframeAPIReady() {
       origin: window.location.origin
     },
     events: {
-      onReady: () => updateMilanTrack(),
+      onReady: () => {
+  updateMilanTrack();
+  setInterval(updateMilanProgress, 500);
+},
 onStateChange: handleMilanPlayerState
     }
   });
