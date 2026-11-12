@@ -2557,6 +2557,23 @@ function playMilanTrack(index) {
   }
     }
 
+    function updateMilanProgress() {
+  if (!milanPlayer || !milanPlayer.getDuration) return;
+
+  const duration = milanPlayer.getDuration();
+  const currentTime = milanPlayer.getCurrentTime();
+
+  if (!duration || duration <= 0) return;
+
+  const progress = (currentTime / duration) * 100;
+
+  const progressFill = document.getElementById("milanProgressFill");
+
+  if (progressFill) {
+    progressFill.style.width = progress + "%";
+  }
+    }
+
 function toggleMilanPlayback() {
   if (!milanPlayer || !milanPlayer.getPlayerState) return;
 
