@@ -2526,6 +2526,8 @@ function playMilanTrack(index) {
     (index + milanPlaylist.length) % milanPlaylist.length;
 
   const track = milanPlaylist[milanCurrentTrack];
+  document.getElementById("spotify-song").style.display = "block";
+document.getElementById("spotify-artist").style.display = "block";
 const panel = document.getElementById("milanPlayerPanel");
 if (panel) panel.style.display = "flex";
   
