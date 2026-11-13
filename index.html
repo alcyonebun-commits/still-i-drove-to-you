@@ -2501,7 +2501,7 @@ function updateMilanTrack() {
   if (panelCover) panelCover.src = track.cover;
 
   document.querySelectorAll(".spotify-track").forEach((row, index) => {
-    row.classList.toggle("active-track", index === milanCurrentTrack);
+  row.classList.toggle("active-track", index === milanCurrentTrack);
   });
   const panel = document.getElementById("milanPlayerPanel");
 
