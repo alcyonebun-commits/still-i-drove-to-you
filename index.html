@@ -2032,17 +2032,19 @@ gap: 10px;
     </div>
 
     <div class="spotify-widget-controls">
-      <button type="button" onclick="previousMilanTrack()" aria-label="Previous song">
-        Previous
-      </button>
-
-      <button type="button" onclick="toggleMilanPlayback()" id="spotifyWidgetPlayButton" aria-label="Play or pause">
-        Play
-      </button>
-
-      <button type="button" onclick="nextMilanTrack()" aria-label="Next song">
-        Next
-      </button>
+  <button type="button" onclick="previousMilanTrack()" aria-label="Previous song">
+    <svg viewBox="0 0 24 24">
+      <path d="M6 5v14M19 5L8 12l11 7z"/>
+    </svg>
+  </button>  <button type="button" onclick="toggleMilanPlayback()" id="spotifyWidgetPlayButton" aria-label="Play or pause">
+    <svg viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </button>  <button type="button" onclick="nextMilanTrack()" aria-label="Next song">
+    <svg viewBox="0 0 24 24">
+      <path d="M18 5v14M5 5l11 7-11 7z"/>
+    </svg>
+  </button>
     </div>
 
   </div>
