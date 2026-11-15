@@ -2650,6 +2650,12 @@ callingFailTimeout = setTimeout(() => {
 document.querySelectorAll("[data-app]").forEach(app => {
   app.addEventListener("click", () => {
     const name = app.dataset.app;
+
+    if (name === "Photos") {
+      showScreen(document.getElementById("photosScreen"));
+      return;
+    }
+
     const toast = document.getElementById("toast");
     toast.textContent = name + " — coming soon";
     toast.style.display = "block";
