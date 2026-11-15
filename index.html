@@ -2732,6 +2732,11 @@ function toggleMilanPlayback() {
 
   milanHasSelectedTrack = true;
   updateMilanTrack();
+  
+  if (milanCurrentTrack === 0) {
+  const panel = document.getElementById("milanPlayerPanel");
+  if (panel) panel.style.display = "flex";
+  }
 
   if (milanPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
     milanPlayer.pauseVideo();
