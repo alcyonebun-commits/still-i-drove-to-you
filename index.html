@@ -1723,15 +1723,29 @@ gap: 10px;
 
 .photos-categories {
   display: flex;
-  gap: 20px;
-  font-size: 14px;
-  color: #888;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: #f1f1f5;
+  border-radius: 20px;
   margin-bottom: 25px;
+}
+
+.photos-categories span {
+  flex: 1;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 12px;
+  color: #777;
+  border-radius: 16px;
+  cursor: pointer;
 }
 
 .photos-categories .active {
   color: #111;
-  font-weight: 700;
+  font-weight: 600;
+  background: #fff;
+  box-shadow: 0 1px 3px #00000015;
 }
 
 .photos-content h2 {
