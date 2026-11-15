@@ -2864,6 +2864,26 @@ function previousMilanTrack() {
 const youtubeScript = document.createElement("script");
 youtubeScript.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(youtubeScript);
+
+function updateMilanCalendar() {
+  const now = new Date();
+
+  const weekday = document.getElementById("calendarWeekday");
+  const date = document.getElementById("calendarDate");
+
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  if (weekday) {
+    weekday.textContent = days[now.getDay()];
+  }
+
+  if (date) {
+    date.textContent = now.getDate();
+  }
+}
+
+updateMilanCalendar();
+    
   </script>
 
 </body>
