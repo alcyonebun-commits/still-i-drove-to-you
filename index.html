@@ -2730,6 +2730,9 @@ if (progressFill) progressFill.style.width = "0%";
 function toggleMilanPlayback() {
   if (!milanPlayer || !milanPlayer.getPlayerState) return;
 
+  milanHasSelectedTrack = true;
+  updateMilanTrack();
+
   if (milanPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
     milanPlayer.pauseVideo();
   } else {
