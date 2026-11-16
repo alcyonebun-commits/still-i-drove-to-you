@@ -2583,7 +2583,13 @@ function showScreen(screen) {
   document.querySelectorAll(".screen").forEach(s => {
     s.classList.remove("active");
   });
+
   screen.classList.add("active");
+
+  document.getElementById("phone").classList.toggle(
+    "photos-open",
+    screen.id === "photosScreen"
+  );
 }
 
 function openPasscode() {
