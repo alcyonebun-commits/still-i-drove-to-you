@@ -3390,11 +3390,19 @@ updateMilanCalendar();
   });
       
     } else {
-      const img = document.createElement("img");
-      img.src = file;
-      img.loading = "lazy";
-      img.alt = "";
-      item.appendChild(img);
+  const img = document.createElement("img");
+  img.src = file;
+  img.loading = "lazy";
+  img.alt = "";
+  item.appendChild(img);
+
+  item.addEventListener("click", () => {
+    const viewer = document.getElementById("photoViewer");
+    const photo = document.getElementById("viewerPhoto");
+
+    photo.src = file;
+    viewer.style.display = "flex";
+  });
     }
 
     grid.appendChild(item);
