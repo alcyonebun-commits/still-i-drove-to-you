@@ -3239,7 +3239,7 @@ updateMilanCalendar();
   let photoOrder;
 
   if (savedOrder) {
-  photoOrder = JSON.parse(savedOrder);
+  photoOrder = JSON.parse(savedOrder).filter(file => milanPhotos.includes(file));
 
   const newPhotos = milanPhotos.filter(file => !photoOrder.includes(file));
 
