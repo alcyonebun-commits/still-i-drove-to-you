@@ -3229,6 +3229,59 @@ updateMilanCalendar();
   "milan-02.jpg",
   "milan-01.jpg"
 ];
+
+    function renderMilanPhotos() {
+  const grid = document.getElementById("photosGrid");
+  if (!grid) return;
+
+  let savedOrder = localStorage.getItem("milanPhotoOrder");
+  let photoOrder;
+
+  if (savedOrder) {
+    photoOrder = JSON.parse(savedOrder);
+  } else {
+    const pair = ["milan-nolan-02.jpg", "milan-nolan-01.jpg"];
+
+    const others = milanPhotos.filter(file => !pair.includes(file));
+
+    for (let i = others.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [others[i], others[j]] = [others[j], others[i]];
+    }
+
+    const position = Math.floor(Math.random() * (others.length + 1));
+    others.splice(position, 0, ...pair);
+
+    photoOrder = others;
+    localStorage.setItem("milanPhotoOrder", JSON.stringify(photoOrder));
+  }
+
+  grid.innerHTML = "";
+
+  photoOrder.forEach(file => {
+    const item = document.createElement("div");
+    item.className = "photo-item";
+
+    if (file.endsWith(".mp4")) {
+      const video = document.createElement("video");
+      video.src = file;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      item.appendChild(video);
+    } else {
+      const img = document.createElement("img");
+      img.src = file;
+      img.loading = "lazy";
+      img.alt = "";
+      item.appendChild(img);
+    }
+
+    grid.appendChild(item);
+  });
+}
+
+renderMilanPhotos();
     
   </script>
 
