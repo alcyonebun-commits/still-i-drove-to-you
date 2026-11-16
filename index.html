@@ -3418,6 +3418,14 @@ updateMilanCalendar();
   viewer.style.display = "none";
 });
 
+    document.getElementById("photoClose").addEventListener("click", () => {
+  const viewer = document.getElementById("photoViewer");
+  const photo = document.getElementById("viewerPhoto");
+
+  photo.src = "";
+  viewer.style.display = "none";
+});
+
 renderMilanPhotos();
     
   </script>
