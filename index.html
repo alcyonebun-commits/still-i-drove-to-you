@@ -3247,49 +3247,71 @@ updateMilanCalendar();
   const grid = document.getElementById("photosGrid");
   if (!grid) return;
 
+  const currentPhotos = milanPhotos.filter(
+    file => !oldPhotos.includes(file)
+  );
+
   let savedOrder = localStorage.getItem("milanPhotoOrder");
   let photoOrder;
 
   if (savedOrder) {
-  photoOrder = JSON.parse(savedOrder).filter(file => milanPhotos.includes(file));
-
-  const newPhotos = milanPhotos.filter(file => !photoOrder.includes(file));
-
-  newPhotos.forEach(file => {
-    const positions = Array.from(
-      { length: photoOrder.length + 1 },
-      (_, i) => i
-    ).filter(i =>
-      !(photoOrder[i - 1] === "milan-nolan-02.jpg" &&
-        photoOrder[i] === "milan-nolan-01.jpg")
+    photoOrder = JSON.parse(savedOrder).filter(
+      file => currentPhotos.includes(file)
     );
 
-    const position = positions[Math.floor(Math.random() * positions.length)];
-    photoOrder.splice(position, 0, file);
-  });
+    const newPhotos = currentPhotos.filter(
+      file => !photoOrder.includes(file)
+    );
 
-  localStorage.setItem("milanPhotoOrder", JSON.stringify(photoOrder));
+    newPhotos.forEach(file => {
+      const positions = Array.from(
+        { length: photoOrder.length + 1 },
+        (_, i) => i
+      ).filter(i =>
+        !(photoOrder[i - 1] === "milan-nolan-02.jpg" &&
+          photoOrder[i] === "milan-nolan-01.jpg")
+      );
 
-} else {
-    const pair = ["milan-nolan-02.jpg", "milan-nolan-01.jpg"];
+      const position = positions[
+        Math.floor(Math.random() * positions.length)
+      ];
 
-    const others = milanPhotos.filter(file => !pair.includes(file));
+      photoOrder.splice(position, 0, file);
+    });
+
+  } else {
+    const pair = [
+      "milan-nolan-02.jpg",
+      "milan-nolan-01.jpg"
+    ];
+
+    const others = currentPhotos.filter(
+      file => !pair.includes(file)
+    );
 
     for (let i = others.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [others[i], others[j]] = [others[j], others[i]];
     }
 
-    const position = Math.floor(Math.random() * (others.length + 1));
-    others.splice(position, 0, ...pair);
+    const position = Math.floor(
+      Math.random() * (others.length + 1)
+    );
 
+    others.splice(position, 0, ...pair);
     photoOrder = others;
-    localStorage.setItem("milanPhotoOrder", JSON.stringify(photoOrder));
   }
+
+  localStorage.setItem(
+    "milanPhotoOrder",
+    JSON.stringify(photoOrder)
+  );
+
+  const finalOrder = [...photoOrder, ...oldPhotos];
 
   grid.innerHTML = "";
 
-  photoOrder.forEach(file => {
+  finalOrder.forEach(file => {
     const item = document.createElement("div");
     item.className = "photo-item";
 
