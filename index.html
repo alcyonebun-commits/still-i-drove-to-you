@@ -3350,12 +3350,22 @@ updateMilanCalendar();
     item.className = "photo-item";
 
     if (file.endsWith(".mp4")) {
-      const video = document.createElement("video");
-      video.src = file;
-      video.muted = true;
-      video.playsInline = true;
-      video.preload = "metadata";
-      item.appendChild(video);
+  const video = document.createElement("video");
+  video.src = file;
+  video.muted = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  item.appendChild(video);
+
+  item.addEventListener("click", () => {
+    const viewer = document.getElementById("videoViewer");
+    const player = document.getElementById("viewerVideo");
+
+    player.src = file;
+    viewer.style.display = "flex";
+    player.play();
+  });
+    }
     } else {
       const img = document.createElement("img");
       img.src = file;
