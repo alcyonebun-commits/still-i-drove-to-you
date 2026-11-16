@@ -3378,6 +3378,15 @@ updateMilanCalendar();
   });
 }
 
+    document.getElementById("videoClose").addEventListener("click", () => {
+  const viewer = document.getElementById("videoViewer");
+  const player = document.getElementById("viewerVideo");
+
+  player.pause();
+  player.src = "";
+  viewer.style.display = "none";
+});
+
 renderMilanPhotos();
     
   </script>
