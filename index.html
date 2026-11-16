@@ -3239,8 +3239,26 @@ updateMilanCalendar();
   let photoOrder;
 
   if (savedOrder) {
-    photoOrder = JSON.parse(savedOrder);
-  } else {
+  photoOrder = JSON.parse(savedOrder);
+
+  const newPhotos = milanPhotos.filter(file => !photoOrder.includes(file));
+
+  newPhotos.forEach(file => {
+    const positions = Array.from(
+      { length: photoOrder.length + 1 },
+      (_, i) => i
+    ).filter(i =>
+      !(photoOrder[i - 1] === "milan-nolan-02.jpg" &&
+        photoOrder[i] === "milan-nolan-01.jpg")
+    );
+
+    const position = positions[Math.floor(Math.random() * positions.length)];
+    photoOrder.splice(position, 0, file);
+  });
+
+  localStorage.setItem("milanPhotoOrder", JSON.stringify(photoOrder));
+
+} else {
     const pair = ["milan-nolan-02.jpg", "milan-nolan-01.jpg"];
 
     const others = milanPhotos.filter(file => !pair.includes(file));
