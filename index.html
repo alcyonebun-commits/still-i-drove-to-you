@@ -1928,7 +1928,17 @@ gap: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.photo-main img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
 }
 
 .photo-main img {
