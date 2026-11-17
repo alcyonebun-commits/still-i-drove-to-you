@@ -1931,20 +1931,21 @@ gap: 10px;
   overflow: visible;
 }
 
-.photo-main img {
+.photo-main {
+  flex: 1;
+  min-height: 0;
   width: 100%;
-  height: auto;
-  max-height: none;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 
 .photo-main img {
   width: 100%;
+  max-width: none;
   height: auto;
-  max-height: 100%;
+  max-height: none;
   object-fit: contain;
   object-position: center;
   display: block;
