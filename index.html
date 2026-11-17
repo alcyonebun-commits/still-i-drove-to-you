@@ -2606,11 +2606,11 @@ indicator.style.backgroundColor =
   screen.id === "photosScreen" ? "#000000" : "#ffffff";
 
   indicator.style.bottom = "100px";
+indicator.style.transform = "translateX(-50%)";
 
-indicator.style.transform =
-  screen.id === "photosScreen"
-    ? "translate(-50%, 10px)"
-    : "translateX(-50%)";
+if (screen.id === "photosScreen") {
+  indicator.style.transform = "translate(-50%, 5px)";
+}
 
   document.getElementById("phone").classList.toggle(
     "photos-open",
