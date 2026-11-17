@@ -3638,12 +3638,15 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   item.appendChild(video);
 
   item.addEventListener("click", () => {
-    const viewer = document.getElementById("videoViewer");
-    const player = document.getElementById("viewerVideo");
+  const viewer = document.getElementById("videoViewer");
+  const player = document.getElementById("viewerVideo");
 
-    player.src = file;
-    viewer.style.display = "flex";
-    player.play();
+  document.getElementById("photoDate").textContent = dateLabel;
+  document.getElementById("photoTime").textContent = timeLabel;
+
+  player.src = file;
+  viewer.style.display = "flex";
+  player.play();
   });
       
     } else {
