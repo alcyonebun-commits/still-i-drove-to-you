@@ -2600,6 +2600,11 @@ function showScreen(screen) {
 
   screen.classList.add("active");
 
+  const indicator = document.getElementById("homeIndicator");
+
+indicator.style.backgroundColor =
+  screen.id === "photosScreen" ? "#000000" : "#ffffff";
+
   document.getElementById("phone").classList.toggle(
     "photos-open",
     screen.id === "photosScreen"
