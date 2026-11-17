@@ -3608,6 +3608,7 @@ function createMilanPhotoDates(currentOrder) {
   );
 
   const finalOrder = [...photoOrder, ...oldPhotos];
+  const photoDates = createMilanPhotoDates(finalOrder);    
 
   grid.innerHTML = "";
 
