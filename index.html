@@ -3616,6 +3616,19 @@ function createMilanPhotoDates(currentOrder) {
     const item = document.createElement("div");
     item.className = "photo-item";
 
+    const mediaDate = new Date(photoDates[file]);
+
+const dateLabel = mediaDate.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric"
+});
+
+const timeLabel = mediaDate.toLocaleTimeString("en-US", {
+  hour: "numeric",
+  minute: "2-digit"
+});
+
     if (file.endsWith(".mp4")) {
   const video = document.createElement("video");
   video.src = file;
