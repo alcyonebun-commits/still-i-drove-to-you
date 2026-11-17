@@ -1858,22 +1858,126 @@ gap: 10px;
   font-size: 18px;
 }
 
-  .photo-viewer {
+/* PHOTO VIEWER */
+.photo-viewer {
   display: none;
   position: absolute;
   inset: 0;
   z-index: 100;
   background: #fff;
-  align-items: center;
-  justify-content: center;
+  color: #111;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.photo-viewer img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+/* TOP BAR */
+.photo-topbar {
+  height: 115px;
+  min-height: 115px;
+  padding: 48px 18px 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.photo-topbar button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background: #ffffffdd;
+  font-size: 25px;
+  color: #111;
+  cursor: pointer;
+}
+
+.photo-back {
+  font-size: 30px !important;
+}
+
+.photo-more {
+  font-size: 13px !important;
+  letter-spacing: 1px;
+}
+
+.photo-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  gap: 2px;
+}
+
+.photo-date strong {
+  font-size: 15px;
+}
+
+.photo-date span {
+  font-size: 11px;
+}
+
+/* PHOTO AREA */
+.photo-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-main img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+}
+
+/* FILMSTRIP */
+.photo-filmstrip {
+  height: 75px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 15px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* BOTTOM TOOLBAR */
+.photo-toolbar {
+  height: 85px;
+  min-height: 85px;
+  padding: 8px 25px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.photo-toolbar button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 24px;
+}
+
+.photo-toolbar-center {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 5px 15px;
+  border: 1px solid #eee;
+  border-radius: 25px;
 }
 
   .photos-grid img {
