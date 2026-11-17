@@ -3654,12 +3654,15 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   item.appendChild(img);
 
   item.addEventListener("click", () => {
-    const viewer = document.getElementById("photoViewer");
-    const photo = document.getElementById("viewerPhoto");
+  const viewer = document.getElementById("photoViewer");
+  const photo = document.getElementById("viewerPhoto");
 
-    photo.src = file;
-    viewer.style.display = "flex";
-  });
+  document.getElementById("photoDate").textContent = dateLabel;
+  document.getElementById("photoTime").textContent = timeLabel;
+
+  photo.src = file;
+  viewer.style.display = "flex";
+});
     }
 
     grid.appendChild(item);
