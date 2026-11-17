@@ -3493,52 +3493,72 @@ updateMilanCalendar();
 ];
 
 function createMilanPhotoDates(currentOrder) {
-  let savedDates = localStorage.getItem("milanPhotoDates");
-  let dates = savedDates ? JSON.parse(savedDates) : {};
+  const dates = {};
 
-  const now = new Date();
-  let currentDate = new Date(now);
+  function assignDates(files, start, end) {
+    const groups = [];
 
-  // Tanggal untuk foto dan video terbaru
-  currentOrder.forEach(file => {
-    if (!dates[file]) {
-      dates[file] = currentDate.toISOString();
+    for (let i = 0; i < files.length; i++) {
+      if (
+        files[i] === "milan-nolan-02.jpg" &&
+        files[i + 1] === "milan-nolan-01.jpg"
+      ) {
+        groups.push([files[i], files[i + 1]]);
+        i++;
+      } else {
+        groups.push([files[i]]);
+      }
+    }
 
-      currentDate.setDate(
-        currentDate.getDate() - (Math.floor(Math.random() * 5) + 1)
+    const startDate = new Date(start).getTime();
+    const endDate = new Date(end).getTime();
+
+    groups.forEach((group, index) => {
+      const ratio = groups.length === 1
+        ? 0
+        : index / (groups.length - 1);
+
+      const target = new Date(
+        startDate + (endDate - startDate) * ratio
       );
 
-      currentDate.setHours(
-        Math.floor(Math.random() * 24),
+      target.setHours(
+        Math.floor(Math.random() * 13) + 8,
         Math.floor(Math.random() * 60),
         0,
         0
       );
-    }
-  });
 
-  // Tanggal untuk 9 foto lama (dua tahun sebelumnya)
-  let oldDate = new Date(now);
-  oldDate.setFullYear(oldDate.getFullYear() - 2);
+      dates[group[0]] = target.toISOString();
 
-  oldPhotos.forEach(file => {
-    if (!dates[file]) {
-      dates[file] = oldDate.toISOString();
+      if (group.length === 2) {
+        const secondDate = new Date(target);
+        secondDate.setMinutes(
+          secondDate.getMinutes() -
+          (Math.floor(Math.random() * 5) + 3)
+        );
 
-      oldDate.setDate(
-        oldDate.getDate() - (Math.floor(Math.random() * 15) + 1)
-      );
+        dates[group[1]] = secondDate.toISOString();
+      }
+    });
+  }
 
-      oldDate.setHours(
-        Math.floor(Math.random() * 24),
-        Math.floor(Math.random() * 60),
-        0,
-        0
-      );
-    }
-  });
+  assignDates(
+    currentOrder,
+    "2026-11-17T00:00:00",
+    "2025-01-01T00:00:00"
+  );
 
-  localStorage.setItem("milanPhotoDates", JSON.stringify(dates));
+  assignDates(
+    oldPhotos,
+    "2024-12-20T00:00:00",
+    "2024-01-15T00:00:00"
+  );
+
+  localStorage.setItem(
+    "milanPhotoDates",
+    JSON.stringify(dates)
+  );
 
   return dates;
 }
