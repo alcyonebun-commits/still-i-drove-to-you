@@ -2605,13 +2605,6 @@ function showScreen(screen) {
 indicator.style.backgroundColor =
   screen.id === "photosScreen" ? "#000000" : "#ffffff";
 
-  indicator.style.bottom = "100px";
-indicator.style.transform = "translateX(-50%)";
-
-if (screen.id === "photosScreen") {
-  indicator.style.transform = "translate(-50%, 5px)";
-}
-
   document.getElementById("phone").classList.toggle(
     "photos-open",
     screen.id === "photosScreen"
