@@ -1910,6 +1910,37 @@ gap: 10px;
   padding: 0;
 }
 
+/* Ikon kembali */
+.photo-back {
+  font-size: 0 !important;
+}
+
+.photo-back::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border-left: 2px solid #111;
+  border-bottom: 2px solid #111;
+  transform: translateX(2px) rotate(45deg);
+}
+
+/* Ikon tiga titik */
+.photo-more {
+  font-size: 0 !important;
+  letter-spacing: 0;
+  position: relative;
+}
+
+.photo-more::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 7px 0 #111, 14px 0 #111;
+  transform: translateX(-7px);
+}
+
 .photo-back {
   font-size: 30px !important;
 }
