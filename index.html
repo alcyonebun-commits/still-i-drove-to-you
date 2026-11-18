@@ -3531,11 +3531,11 @@ function createMilanPhotoDates(currentOrder) {
       );
 
       target.setHours(
-        Math.floor(Math.random() * 13) + 8,
-        Math.floor(Math.random() * 60),
-        0,
-        0
-      );
+  Math.floor(randomDate() * 13) + 8,
+  Math.floor(randomDate() * 60),
+  0,
+  0
+);
 
       dates[group[0]] = target.toISOString();
 
