@@ -3587,56 +3587,29 @@ function createMilanPhotoDates(currentOrder) {
     file => !oldPhotos.includes(file)
   );
 
-  let savedOrder = localStorage.getItem("milanPhotoOrder");
-  let photoOrder;
+  const randomOrder = createSeededRandom(20261117);
 
-  if (savedOrder) {
-    photoOrder = JSON.parse(savedOrder).filter(
-      file => currentPhotos.includes(file)
-    );
+const pair = [
+  "milan-nolan-02.jpg",
+  "milan-nolan-01.jpg"
+];
 
-    const newPhotos = currentPhotos.filter(
-      file => !photoOrder.includes(file)
-    );
+const others = currentPhotos.filter(
+  file => !pair.includes(file)
+);
 
-    newPhotos.forEach(file => {
-      const positions = Array.from(
-        { length: photoOrder.length + 1 },
-        (_, i) => i
-      ).filter(i =>
-        !(photoOrder[i - 1] === "milan-nolan-02.jpg" &&
-          photoOrder[i] === "milan-nolan-01.jpg")
-      );
+for (let i = others.length - 1; i > 0; i--) {
+  const j = Math.floor(randomOrder() * (i + 1));
+  [others[i], others[j]] = [others[j], others[i]];
+}
 
-      const position = positions[
-        Math.floor(Math.random() * positions.length)
-      ];
+const position = Math.floor(
+  randomOrder() * (others.length + 1)
+);
 
-      photoOrder.splice(position, 0, file);
-    });
+others.splice(position, 0, ...pair);
 
-  } else {
-    const pair = [
-      "milan-nolan-02.jpg",
-      "milan-nolan-01.jpg"
-    ];
-
-    const others = currentPhotos.filter(
-      file => !pair.includes(file)
-    );
-
-    for (let i = others.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [others[i], others[j]] = [others[j], others[i]];
-    }
-
-    const position = Math.floor(
-      Math.random() * (others.length + 1)
-    );
-
-    others.splice(position, 0, ...pair);
-    photoOrder = others;
-  }
+const photoOrder = others;
 
   localStorage.setItem(
     "milanPhotoOrder",
