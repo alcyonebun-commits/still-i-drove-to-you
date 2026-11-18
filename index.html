@@ -3543,7 +3543,7 @@ function createMilanPhotoDates(currentOrder) {
         const secondDate = new Date(target);
         secondDate.setMinutes(
           secondDate.getMinutes() -
-          (Math.floor(Math.random() * 5) + 3)
+          (Math.floor(randomDate() * 5) + 3)
         );
 
         dates[group[1]] = secondDate.toISOString();
