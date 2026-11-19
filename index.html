@@ -3942,16 +3942,8 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   item.appendChild(video);
 
   item.addEventListener("click", () => {
-  const viewer = document.getElementById("videoViewer");
-  const player = document.getElementById("viewerVideo");
-
-  document.getElementById("videoDate").textContent = dateLabel;
-  document.getElementById("videoTime").textContent = timeLabel;
-
-  player.src = file;
-  viewer.style.display = "flex";
-  player.play();
-  });
+  openMilanMedia(index);
+});
       
     } else {
   const img = document.createElement("img");
