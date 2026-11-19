@@ -3913,7 +3913,7 @@ function openMilanMedia(index) {
       
   grid.innerHTML = "";
 
-  finalOrder.forEach(file => {
+  finalOrder.forEach((file, index) => {
     const item = document.createElement("div");
     item.className = "photo-item";
 
