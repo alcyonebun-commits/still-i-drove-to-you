@@ -3959,25 +3959,15 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
 
     grid.appendChild(item);
   });
-        const videoFilmstrip = document.getElementById("videoFilmstrip");
-  videoFilmstrip.innerHTML = "";
+        ["photoFilmstrip", "videoFilmstrip"].forEach(id => {
+  const filmstrip = document.getElementById(id);
+  if (!filmstrip) return;
 
-  finalOrder.forEach(file => {
+  filmstrip.innerHTML = "";
+
+  finalOrder.forEach((file, index) => {
     const thumb = document.createElement("div");
     thumb.className = "photo-item";
-
-    const mediaDate = new Date(photoDates[file]);
-
-    const dateLabel = mediaDate.toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    });
-
-    const timeLabel = mediaDate.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit"
-    });
 
     if (file.endsWith(".mp4")) {
       thumb.classList.add("video-item");
@@ -3987,43 +3977,25 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
       video.muted = true;
       video.playsInline = true;
       video.preload = "metadata";
+
       thumb.appendChild(video);
-
-      thumb.addEventListener("click", () => {
-        const player = document.getElementById("viewerVideo");
-
-        document.getElementById("videoDate").textContent = dateLabel;
-        document.getElementById("videoTime").textContent = timeLabel;
-
-        player.pause();
-        player.src = file;
-        player.load();
-        player.play();
-      });
 
     } else {
       const img = document.createElement("img");
       img.src = file;
       img.loading = "lazy";
+      img.alt = "";
+
       thumb.appendChild(img);
-
-      thumb.addEventListener("click", () => {
-        const player = document.getElementById("viewerVideo");
-
-        player.pause();
-
-        document.getElementById("photoDate").textContent = dateLabel;
-        document.getElementById("photoTime").textContent = timeLabel;
-
-        document.getElementById("viewerPhoto").src = file;
-
-        document.getElementById("videoViewer").style.display = "none";
-        document.getElementById("photoViewer").style.display = "flex";
-      });
     }
 
-    videoFilmstrip.appendChild(thumb);
+    thumb.addEventListener("click", () => {
+      openMilanMedia(index);
+    });
+
+    filmstrip.appendChild(thumb);
   });
+});
 }
 
     document.getElementById("videoClose").addEventListener("click", () => {
