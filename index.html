@@ -3857,7 +3857,8 @@ const photoOrder = others;
   );
 
   const finalOrder = [...photoOrder, ...oldPhotos];
-  const photoDates = createMilanPhotoDates(finalOrder);    
+  const photoDates = createMilanPhotoDates(finalOrder);  
+  let currentMediaIndex = 0;    
 
   grid.innerHTML = "";
 
