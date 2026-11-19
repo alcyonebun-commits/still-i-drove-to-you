@@ -3811,8 +3811,8 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   const viewer = document.getElementById("videoViewer");
   const player = document.getElementById("viewerVideo");
 
-  document.getElementById("photoDate").textContent = dateLabel;
-  document.getElementById("photoTime").textContent = timeLabel;
+  document.getElementById("videoDate").textContent = dateLabel;
+  document.getElementById("videoTime").textContent = timeLabel;
 
   player.src = file;
   viewer.style.display = "flex";
