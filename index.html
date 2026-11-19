@@ -3796,11 +3796,6 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   document.getElementById("photoTime").textContent = timeLabel;
 
   photo.src = file;
-
-photo.onload = () => {
-  console.log(photo.naturalWidth, photo.naturalHeight);
-};
-
 viewer.style.display = "flex";
 });
     }
