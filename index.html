@@ -3860,6 +3860,57 @@ const photoOrder = others;
   const photoDates = createMilanPhotoDates(finalOrder);  
   let currentMediaIndex = 0;    
 
+function openMilanMedia(index) {
+  if (index < 0 || index >= finalOrder.length) return;
+
+  currentMediaIndex = index;
+
+  const file = finalOrder[index];
+  const mediaDate = new Date(photoDates[file]);
+
+  const dateLabel = mediaDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+
+  const timeLabel = mediaDate.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit"
+  });
+
+  const photoViewer = document.getElementById("photoViewer");
+  const videoViewer = document.getElementById("videoViewer");
+  const photo = document.getElementById("viewerPhoto");
+  const player = document.getElementById("viewerVideo");
+
+  player.pause();
+
+  if (file.endsWith(".mp4")) {
+    photoViewer.style.display = "none";
+    videoViewer.style.display = "flex";
+
+    document.getElementById("videoDate").textContent = dateLabel;
+    document.getElementById("videoTime").textContent = timeLabel;
+
+    player.src = file;
+    player.load();
+    player.play().catch(() => {});
+
+  } else {
+    videoViewer.style.display = "none";
+    photoViewer.style.display = "flex";
+
+    document.getElementById("photoDate").textContent = dateLabel;
+    document.getElementById("photoTime").textContent = timeLabel;
+
+    player.removeAttribute("src");
+    player.load();
+
+    photo.src = file;
+  }
+}
+      
   grid.innerHTML = "";
 
   finalOrder.forEach(file => {
