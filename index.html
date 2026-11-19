@@ -3840,6 +3840,8 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
 });
 
     if (file.endsWith(".mp4")) {
+  item.classList.add("video-item");
+
   const video = document.createElement("video");
   video.src = file;
   video.muted = true;
