@@ -2765,9 +2765,43 @@ gap: 10px;
 </div>
 
 <div class="video-viewer" id="videoViewer">
-  <button class="video-close" id="videoClose">✕</button>
-  <video id="viewerVideo" controls playsinline></video>
+
+  <!-- TOP BAR -->
+  <div class="photo-topbar">
+    <button id="videoClose" class="photo-back">‹</button>
+
+    <div class="photo-date">
+      <strong id="videoDate">December 17, 2025</strong>
+      <span id="videoTime">3:42 PM</span>
     </div>
+
+    <button class="photo-more">•••</button>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="photo-main">
+    <video id="viewerVideo" controls playsinline></video>
+  </div>
+
+  <!-- FILMSTRIP -->
+  <div class="photo-filmstrip"></div>
+
+  <!-- BOTTOM TOOLBAR -->
+  <div class="photo-toolbar">
+
+    <button>Share</button>
+
+    <div class="photo-toolbar-center">
+      <button>♡</button>
+      <button>ⓘ</button>
+      <button>☷</button>
+    </div>
+
+    <button>Delete</button>
+
+  </div>
+
+</div>
 
 <div class="photo-viewer" id="photoViewer">
 
