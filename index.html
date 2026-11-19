@@ -3867,6 +3867,7 @@ const timeLabel = mediaDate.toLocaleTimeString("en-US", {
   video.muted = true;
   video.playsInline = true;
   video.preload = "metadata";
+  video.controls = false;
   item.appendChild(video);
 
   item.addEventListener("click", () => {
