@@ -3875,6 +3875,16 @@ function openMilanMedia(index) {
   currentMediaIndex = index;
 
   const file = finalOrder[index];
+
+  document.querySelectorAll(".photo-filmstrip").forEach(filmstrip => {
+  const thumbnails = filmstrip.querySelectorAll(".photo-item");
+  thumbnails[index]?.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+    inline: "center"
+  });
+});
+  
   const mediaDate = new Date(photoDates[file]);
 
   const dateLabel = mediaDate.toLocaleDateString("en-US", {
