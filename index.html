@@ -3876,14 +3876,21 @@ function openMilanMedia(index) {
 
   const file = finalOrder[index];
 
-  document.querySelectorAll(".photo-filmstrip").forEach(filmstrip => {
-  const thumbnails = filmstrip.querySelectorAll(".photo-item");
-  thumbnails[index]?.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest",
-    inline: "center"
-  });
-});
+  const activeFilmstrip = file.endsWith(".mp4")
+  ? document.getElementById("videoFilmstrip")
+  : document.getElementById("photoFilmstrip");
+
+if (activeFilmstrip) {
+  const thumbnail = activeFilmstrip.children[index];
+
+  if (thumbnail) {
+    activeFilmstrip.scrollTo({
+      left: thumbnail.offsetLeft -
+        (activeFilmstrip.clientWidth - thumbnail.offsetWidth) / 2,
+      behavior: "smooth"
+    });
+  }
+}
   
   const mediaDate = new Date(photoDates[file]);
 
