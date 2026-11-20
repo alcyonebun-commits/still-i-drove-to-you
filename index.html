@@ -3876,22 +3876,6 @@ function openMilanMedia(index) {
 
   const file = finalOrder[index];
 
-  const activeFilmstrip = file.endsWith(".mp4")
-  ? document.getElementById("videoFilmstrip")
-  : document.getElementById("photoFilmstrip");
-
-if (activeFilmstrip) {
-  const thumbnail = activeFilmstrip.children[index];
-
-  if (thumbnail) {
-    activeFilmstrip.scrollTo({
-      left: thumbnail.offsetLeft -
-        (activeFilmstrip.clientWidth - thumbnail.offsetWidth) / 2,
-      behavior: "smooth"
-    });
-  }
-}
-  
   const mediaDate = new Date(photoDates[file]);
 
   const dateLabel = mediaDate.toLocaleDateString("en-US", {
@@ -3935,6 +3919,23 @@ if (activeFilmstrip) {
 
     photo.src = file;
   }
+
+const activeFilmstrip = file.endsWith(".mp4")
+  ? document.getElementById("videoFilmstrip")
+  : document.getElementById("photoFilmstrip");
+
+if (activeFilmstrip) {
+  const thumbnail = activeFilmstrip.children[index];
+
+  if (thumbnail) {
+    activeFilmstrip.scrollTo({
+      left: thumbnail.offsetLeft -
+        (activeFilmstrip.clientWidth - thumbnail.offsetWidth) / 2,
+      behavior: "smooth"
+    });
+  }
+}
+  
 }
       
   grid.innerHTML = "";
